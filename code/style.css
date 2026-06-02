@@ -291,14 +291,15 @@ li {
 
 .terminal-window {
     width: 90%;
-    max-width: 850px;
+    max-width: 480px;
+    max-height: 550px;
     background-color: var(--window-bg);
     border: 1px solid var(--border-color);
     border-radius: 10px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
     overflow: hidden;
     position: relative;
-    margin: 2% auto;
+    margin: 2%;
 }
 
 /* Top Bar / Header */
@@ -429,21 +430,8 @@ li {
 .btn-details a{
     text-decoration: none;
 }
-.demo{
-    margin-right: 10px;
-    background: transparent;
-    color: white;
-    border: 1.5px solid white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-family: inherit;
-    font-weight: 500;
-    cursor: pointer;
+.projects-container{
     display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
-.demo :hover{
-    background: white;
+    flex-direction: row;
+    gap: 2px;
 }
