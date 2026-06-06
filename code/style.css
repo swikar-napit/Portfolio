@@ -254,7 +254,7 @@ li {
 
 .skilltopic {
     text-align: center;
-    font-size: 2em;
+    font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 .content {
@@ -271,7 +271,9 @@ li {
     border: 1px solid #30363d;
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
+    width: clamp(200px, 28%, 300px);
+    flex: 1;
+    min-width: 200px;
     color: var(--text);
 
 }
@@ -296,8 +298,9 @@ li {
 }
 
 .terminal-window {
-    width: 90%;
-    max-width: 480px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
     max-height: 550px;
     background-color: var(--window-bg);
     border: 1px solid var(--border-color);
@@ -305,7 +308,6 @@ li {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
     overflow: hidden;
     position: relative;
-    margin: 2%;
 }
 
 /* Top Bar / Header */
@@ -328,17 +330,9 @@ li {
     border-radius: 50%;
 }
 
-.red {
-    background: #ff5f56;
-}
-
-.yellow {
-    background: #ffbd2e;
-}
-
-.green {
-    background: #27c93f;
-}
+.red{background: #ff5f56;}
+.yellow{background: #ffbd2e;}
+.green{background: #27c93f;}
 
 .terminal-user {
     margin-left: 25px;
@@ -354,11 +348,11 @@ li {
 
 /* Content Body */
 .terminal-body {
-    padding: 40px;
+    padding: 30px;
 }
 
 .hero-section {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .prompt {
@@ -371,19 +365,19 @@ li {
 .subtitle {
     color: var(--text-dim);
     margin-top: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .description {
-    margin-top: 25px;
+    margin-top: 20px;
     color: var(--text-dim);
     line-height: 1.6;
-    max-width: 90%;
+    max-width: 100%;
 }
 
 /* Tech Tags */
 .tags-container {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -406,7 +400,7 @@ li {
 
 /* Action Buttons */
 .actions {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
 }
 
@@ -435,9 +429,132 @@ li {
 }
 .btn-details a{
     text-decoration: none;
+    color: inherit;
 }
 .projects-container{
     display: flex;
     flex-direction: row;
-    gap: 2px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+ 
+/* Large tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 25px;
+    }
+ 
+    .nav ul {
+        gap: 25px;
+    }
+ 
+    section {
+        padding: 80px 6%;
+    }
+}
+ 
+/* Tablets (≤ 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+ 
+    .nav ul {
+        gap: 15px;
+        font-size: 13px;
+    }
+ 
+    section {
+        padding: 60px 5%;
+    }
+ 
+    .aboutme-par1 {
+        flex-direction: column;
+    }
+ 
+    .aboutpar1,
+    .aboutpar2 {
+        min-width: unset;
+        width: 100%;
+    }
+ 
+    .skill-card {
+        min-width: 45%;
+    }
+ 
+    .terminal-window {
+        min-width: 100%;
+    }
+}
+ 
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 15px;
+        gap: 8px;
+    }
+ 
+    .nav {
+        width: 100%;
+    }
+ 
+    .nav ul {
+        gap: 10px;
+        justify-content: flex-start;
+        font-size: 12px;
+    }
+ 
+    .contact-btn {
+        width: 100%;
+    }
+ 
+    section {
+        padding: 50px 4%;
+    }
+ 
+    .card {
+        padding: 16px;
+    }
+ 
+    .terminal-body {
+        padding: 16px;
+    }
+ 
+    .skilltopic {
+        font-size: 1.3em;
+    }
+ 
+    .skill-card {
+        min-width: 100%;
+    }
+ 
+    .terminal-window {
+        min-width: 100%;
+        max-width: 100%;
+    }
+ 
+    .contri {
+        justify-content: space-around;
+    }
+}
+ 
+/* Very small phones (≤ 380px) */
+@media (max-width: 380px) {
+    .tophead {
+        font-size: 14px;
+    }
+ 
+    .nav ul {
+        font-size: 11px;
+        gap: 8px;
+    }
+ 
+    #home h1 {
+        font-size: 1.3rem;
+    }
 }
