@@ -52,3 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
     typeEffect();
   }
 });
+function toggleMenu() {
+    const nav = document.querySelector('.nav');
+    const hamburger = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+}
+
+document.querySelectorAll('.nav ul a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.nav').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('active');
+    });
+});
