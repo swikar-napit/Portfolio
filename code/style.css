@@ -159,6 +159,7 @@ nav a.active::after {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    align-items: stretch;
 }
 
 .aboutpar1 {
@@ -167,6 +168,7 @@ nav a.active::after {
     flex: 1;
     min-width: 260px;
     gap: 16px;
+    align-self: stretch;
 }
 
 .para1 {
@@ -181,22 +183,34 @@ nav a.active::after {
     border: 2px solid var(--border);
     border-radius: 12px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
 }
-
+.para3 {
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    gap: 10px;                      /* even spacing between all items */
+    justify-content: flex-start;
+}
 #Achievement {
     text-align: center;
+    margin-bottom: 0;
 }
 
 .box {
     border: 1px solid var(--border);
     margin-top: 10px;
-    padding: 10px;
+    border-radius: 6px;
+    padding: 10px 14px;
     /* height: 74px; */
     transition: 0.2s;
 }
 
 .boxbau {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .box p {
@@ -227,10 +241,12 @@ li {
 .contri {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    margin-top: 10px;
     flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+    margin-top: auto;                  
 }
 
 .con {
@@ -240,10 +256,11 @@ li {
 
 .con h3 {
     text-align: center;
+    font-size: 1.4rem;
 }
 
 .con p {
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .box:hover {
