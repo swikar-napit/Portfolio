@@ -47,27 +47,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     setTimeout(typeEffect, isDeleting ? 120 : 120);
   }
-  
+
   if (typingElement) {
     typeEffect();
   }
 });
 function toggleMenu() {
-    const nav = document.querySelector('.nav');
-    const hamburger = document.getElementById('hamburger');
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('active');
+  const nav = document.querySelector('.nav');
+  const hamburger = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  hamburger.classList.toggle('active');
 }
 
 document.querySelectorAll('.nav ul a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav').classList.remove('open');
-        document.getElementById('hamburger').classList.remove('active');
-    });
+  link.addEventListener('click', () => {
+    document.querySelector('.nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+  });
 });
 
 function toggleDesc(id, btn) {
-    const panel = document.getElementById(id);
-    panel.classList.toggle('open');
-    btn.classList.toggle('open');
+  const panel = document.getElementById(id);
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
 }
