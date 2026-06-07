@@ -65,3 +65,9 @@ document.querySelectorAll('.nav ul a').forEach(link => {
         document.getElementById('hamburger').classList.remove('active');
     });
 });
+
+function toggleDesc(id, btn) {
+    const panel = document.getElementById(id);
+    panel.classList.toggle('open');
+    btn.classList.toggle('open');
+}
