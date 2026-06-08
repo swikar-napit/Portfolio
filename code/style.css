@@ -28,13 +28,31 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 15px 40px;
+    padding: 0 40px;
+    height: 64px;
     position: sticky;
-    top: 0%;
+    top: 0;
     width: 100%;
-    background: rgba(11, 14, 26, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(9, 11, 20, 0.88);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
     z-index: 1000;
+    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.4);
+}
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #00f5ff, #58a6ff, #00f5ff, transparent);
+    background-size: 200% 100%;
+    animation: navBorderSlide 4s linear infinite;
+}
+@keyframes navBorderSlide {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .tophead {
@@ -63,9 +81,27 @@ body {
 }
 
 .contact-btn {
-    padding: 8px 16px;
+    padding: 8px 20px;
     cursor: pointer;
     white-space: nowrap;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2), inset 0 0 10px rgba(0, 245, 255, 0.05);
+    transition: all 0.25s ease;
+}
+.contact-btn::after {
+    content: ' →';
+}
+
+.contact-btn:hover {
+    background: rgba(0, 245, 255, 0.08);
+    box-shadow: 0 0 22px rgba(0, 245, 255, 0.45), inset 0 0 14px rgba(0, 245, 255, 0.08);
+    transform: translateY(-1px);
 }
 
 .nav ul a {
@@ -1561,4 +1597,18 @@ li {
     .ct-top {
         grid-template-columns: 1fr;
     }
+}
+/* ===== FOOTER ===== */
+.footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 8%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer p {
+    font-size: 11px;
+    color: #444;
 }
