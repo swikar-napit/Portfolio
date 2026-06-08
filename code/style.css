@@ -95,16 +95,18 @@ section {
 
 #home {
     min-height: calc(100vh - 57px);
-    /* 57px = navbar height */
     padding: 0 8%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 #home h1 {
     font-size: clamp(1.6rem, 4vw, 3rem);
     font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 14px;
+    white-space: nowrap;
 }
 
 #home p {
@@ -112,6 +114,138 @@ section {
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     font-family: 'JetBrains Mono', monospace;
     margin-top: 10px;
+}
+
+#home p.type {
+    color: var(--accent);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 28px;
+    margin-top: 0;
+}
+
+.home-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.code-block {
+    background: #0d1117;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(0, 245, 255, 0.08);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(0, 245, 255, 0.18);
+    }
+}
+
+.code-bar {
+    background: #161b22;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.code-file {
+    font-size: 11px;
+    color: #555;
+    margin-left: 8px;
+}
+
+.code-body {
+    padding: 24px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.code-line {
+    display: block;
+}
+
+.ln {
+    color: #333;
+    margin-right: 16px;
+    user-select: none;
+    min-width: 16px;
+    display: inline-block;
+}
+
+.kw {
+    color: #ff7b72;
+}
+
+.fn {
+    color: #d2a8ff;
+}
+
+.str {
+    color: #a5d6ff;
+}
+
+.cm {
+    color: #8b949e;
+}
+
+.cv {
+    color: #79c0ff;
+}
+
+.val {
+    color: #f8c555;
+}
+
+.nt {
+    color: #e5e7eb;
+}
+
+.code-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--accent);
+    animation: cblink 1s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+@keyframes cblink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* responsive */
+@media (max-width: 768px) {
+    .home-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }
 
 .card {
@@ -223,6 +357,10 @@ nav a.active::after {
     .tophead {
         flex-shrink: 0;
     }
+
+    .ts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .cursor {
@@ -250,6 +388,63 @@ nav a.active::after {
     }
 }
 
+.home-greeting {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.home-bio {
+    font-size: 14px;
+    color: #888 !important;
+    margin-top: 16px;
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+.home-btns {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.home-btn-primary {
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s;
+}
+
+.home-btn-primary:hover {
+    background: var(--accent);
+    color: #0f1220;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.home-btn-secondary {
+    padding: 10px 24px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    color: #888;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s;
+}
+
+.home-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--text);
+}
 
 .aboutme {
     text-align: center;
@@ -457,7 +652,8 @@ li {
     align-items: center;
     padding: 10px 14px;
     background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    /* brighter line */
     gap: 8px;
 }
 
@@ -476,6 +672,8 @@ li {
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .ts-card-title::before {
@@ -515,6 +713,12 @@ li {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .ts-grid {
+        grid-template-columns: 1fr;
     }
 }
 
