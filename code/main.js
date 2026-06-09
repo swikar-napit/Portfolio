@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateActiveLink(); // Initialize on page load
 
   // Typewriter effect for home section
-  const roles = ["Flutist", "Web Developer", "Cybersecurity"];
+  const roles = ["Flutist", "Web Developer", "Cybersecurity Enthusiast", "CSIT Student"];
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
