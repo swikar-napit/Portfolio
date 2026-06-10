@@ -60,12 +60,21 @@ function toggleMenu() {
 }
 
 document.querySelectorAll('.nav ul a').forEach(link => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
     document.querySelector('.nav').classList.remove('open');
     document.getElementById('hamburger').classList.remove('active');
+
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    history.replaceState(null, null, window.location.pathname);
   });
 });
 
+<<<<<<< HEAD
 function toggleDesc(id, btn) {
   const panel = document.getElementById(id);
   panel.classList.toggle('open');
@@ -75,3 +84,13 @@ if (window.location.hash) {
   history.replaceState(null, null, window.location.pathname);
   window.scrollTo(0, 0);
 }
+=======
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 0);
+  }
+});
+>>>>>>> ce03b8d (Fix nav URL hash issue)
