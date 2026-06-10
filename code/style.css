@@ -540,6 +540,72 @@ nav a.active::after {
     align-items: center;
     gap: 16px;
 }
+/* ===== PROFILE TERMINAL BAR ===== */
+.ab-profile-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px 10px 0 0;
+    margin: -28px -28px 0 -28px;
+    margin-bottom: 18px;
+}
+
+.ab-profile-bar-label {
+    font-size: 11px;
+    color: #555;
+    margin-left: 8px;
+}
+
+/* ===== INTERACTIVE TAGS ===== */
+.ab-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ab-tag {
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border-left: 2px solid #333;
+    color: #666;
+    background: rgba(255,255,255,0.02);
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+    cursor: default;
+}
+
+.ab-tag::before {
+    content: "▸ ";
+    color: #333;
+    transition: color 0.25s;
+}
+
+.ab-tag:hover {
+    border-left-color: var(--accent);
+    color: var(--text);
+    background: rgba(0,245,255,0.04);
+    transform: translateX(4px);
+}
+
+.ab-tag:hover::before {
+    color: var(--accent);
+}
+
+.ab-tag.accent {
+    border-left-color: rgba(0,245,255,0.4);
+    color: #aaa;
+}
+
+.ab-tag.accent:hover {
+    border-left-color: var(--accent);
+    color: #00f5ff;
+    background: rgba(0,245,255,0.06);
+    box-shadow: 2px 0 12px rgba(0,245,255,0.08);
+}
 
 .ab-avatar {
     width: 56px;
