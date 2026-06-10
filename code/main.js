@@ -85,11 +85,9 @@ function toggleDesc(id, btn) {
 }
 
 window.addEventListener("load", () => {
-  if (window.location.hash) {
-    history.replaceState(null, null, window.location.pathname);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }, 0);
-  }
+  history.replaceState(null, null, window.location.pathname);
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, 0);
 });
 

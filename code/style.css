@@ -511,8 +511,8 @@ nav a.active::after {
 }
 
 .ab-profile {
-    background: rgba(255,255,255,0.02);
-    border: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     padding: 28px;
     display: flex;
@@ -522,9 +522,9 @@ nav a.active::after {
 }
 
 .ab-profile:hover {
-    border-color: rgba(0,245,255,0.3);
+    border-color: rgba(0, 245, 255, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,245,255,0.06);
+    box-shadow: 0 8px 24px rgba(0, 245, 255, 0.06);
 }
 
 .ab-profile-top {
@@ -532,14 +532,15 @@ nav a.active::after {
     align-items: center;
     gap: 16px;
 }
+
 /* ===== PROFILE TERMINAL BAR ===== */
 .ab-profile-bar {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
-    background: rgba(0,0,0,0.3);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 10px 10px 0 0;
     margin: -28px -28px 0 -28px;
     margin-bottom: 18px;
@@ -564,7 +565,7 @@ nav a.active::after {
     border-radius: 20px;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     color: #666;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     letter-spacing: 0.5px;
     transition: all 0.25s;
     cursor: default;
@@ -579,7 +580,7 @@ nav a.active::after {
 .ab-tag:hover {
     border-left-color: var(--accent);
     color: var(--text);
-    background: rgba(0,245,255,0.04);
+    background: rgba(0, 245, 255, 0.04);
     transform: translateX(4px);
 }
 
@@ -597,8 +598,8 @@ nav a.active::after {
 .ab-tag.accent:hover {
     border-left-color: var(--accent);
     color: #00f5ff;
-    background: rgba(0,245,255,0.06);
-    box-shadow: 2px 0 12px rgba(0,245,255,0.08);
+    background: rgba(0, 245, 255, 0.06);
+    box-shadow: 2px 0 12px rgba(0, 245, 255, 0.08);
 }
 
 .ab-avatar {
@@ -684,20 +685,22 @@ nav a.active::after {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    height: 100%;
 }
 
 .ab-achieve {
-    background: rgba(255,255,255,0.02);
-    border: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     padding: 20px;
     transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    flex: 1;
 }
 
 .ab-achieve:hover {
-    border-color: rgba(167,139,250,0.3);
+    border-color: rgba(167, 139, 250, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(167,139,250,0.06);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.06);
 }
 
 .ab-achieve-label {
@@ -707,19 +710,20 @@ nav a.active::after {
     text-transform: uppercase;
     margin-bottom: 14px;
 }
+
 .ab-badge {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px 12px;
     border-radius: 8px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
     transition: background 0.2s, transform 0.2s;
     margin: 0 -12px;
 }
 
 .ab-badge:hover {
-    background: rgba(167,139,250,0.06);
+    background: rgba(167, 139, 250, 0.06);
     transform: translateX(4px);
 }
 
@@ -728,8 +732,8 @@ nav a.active::after {
 }
 
 .ab-badge:hover .ab-badge-icon {
-    background: rgba(167,139,250,0.2);
-    border-color: rgba(167,139,250,0.4);
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.4);
 }
 
 .ab-badge-name {
@@ -743,8 +747,8 @@ nav a.active::after {
     width: 32px;
     height: 32px;
     border-radius: 8px;
-    background: rgba(167,139,250,0.1);
-    border: 0.5px solid rgba(167,139,250,0.2);
+    background: rgba(167, 139, 250, 0.1);
+    border: 0.5px solid rgba(167, 139, 250, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -769,17 +773,17 @@ nav a.active::after {
 }
 
 .ab-stats {
-    background: rgba(255,255,255,0.02);
-    border: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     padding: 20px;
     transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .ab-stats:hover {
-    border-color: rgba(39,201,63,0.3);
+    border-color: rgba(39, 201, 63, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(39,201,63,0.06);
+    box-shadow: 0 8px 24px rgba(39, 201, 63, 0.06);
 }
 
 .ab-stats-label {
@@ -823,16 +827,16 @@ nav a.active::after {
     align-items: center;
     gap: 14px;
     padding: 16px;
-    background: rgba(255,255,255,0.02);
-    border: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .ab-music:hover {
-    border-color: rgba(167,139,250,0.3);
+    border-color: rgba(167, 139, 250, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(167,139,250,0.06);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.06);
 }
 
 .ab-music-bars {
@@ -902,6 +906,14 @@ nav a.active::after {
 @media (max-width: 768px) {
     .ab-grid {
         grid-template-columns: 1fr;
+    }
+
+    .ab-right {
+        height: auto;
+    }
+
+    .ab-achieve {
+        flex: unset;
     }
 }
 
