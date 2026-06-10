@@ -442,14 +442,6 @@ nav a.active::after {
     opacity: 0.8;
 }
 
-.home-bio {
-    font-size: 14px;
-    color: #888 !important;
-    margin-top: 16px;
-    max-width: 500px;
-    line-height: 1.7;
-}
-
 .home-btns {
     display: flex;
     gap: 14px;
@@ -567,10 +559,10 @@ nav a.active::after {
 }
 
 .ab-tag {
-    font-size: 11px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    border-left: 2px solid #333;
+    font-size: 10px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
     color: #666;
     background: rgba(255,255,255,0.02);
     letter-spacing: 0.5px;
@@ -595,9 +587,11 @@ nav a.active::after {
     color: var(--accent);
 }
 
+
 .ab-tag.accent {
-    border-left-color: rgba(0,245,255,0.4);
-    color: #aaa;
+    border-color: rgba(0, 245, 255, 0.25);
+    color: #00f5ff;
+    background: rgba(0, 245, 255, 0.05);
 }
 
 .ab-tag.accent:hover {
@@ -646,27 +640,7 @@ nav a.active::after {
     line-height: 1.9;
 }
 
-.ab-tags-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
 
-.ab-tag {
-    font-size: 10px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    color: #888;
-    background: rgba(255, 255, 255, 0.03);
-    letter-spacing: 0.5px;
-}
-
-.ab-tag.accent {
-    border-color: rgba(0, 245, 255, 0.25);
-    color: #00f5ff;
-    background: rgba(0, 245, 255, 0.05);
-}
 
 .ab-loc-row {
     display: flex;
@@ -733,16 +707,6 @@ nav a.active::after {
     text-transform: uppercase;
     margin-bottom: 14px;
 }
-
-.ab-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 0.5px solid rgba(255,255,255,0.04);
-}
-
-/* REPLACE WITH */
 .ab-badge {
     display: flex;
     align-items: center;
@@ -796,25 +760,6 @@ nav a.active::after {
 
 .ab-badge:first-of-type {
     padding-top: 0;
-}
-
-.ab-badge-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(167, 139, 250, 0.1);
-    border: 0.5px solid rgba(167, 139, 250, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-}
-
-.ab-badge-name {
-    font-size: 12px;
-    color: var(--text);
-    font-weight: 600;
 }
 
 .ab-badge-desc {
@@ -994,18 +939,6 @@ li {
 
 .green {
     background: #27c93f;
-}
-
-.terminal-user {
-    margin-left: 25px;
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    flex-grow: 1;
-}
-
-.year-stamp {
-    color: var(--text-dim);
-    font-size: 0.85rem;
 }
 
 /* ===== TECH STACK ===== */
@@ -1269,13 +1202,6 @@ li {
     }
 }
 
-.projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
-}
-
 .proj-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1472,16 +1398,6 @@ li {
     font-size: 12px;
     color: #aaa;
     line-height: 1.6;
-}
-
-/* Glow on hover/focus */
-.proj-card {
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.proj-card:hover {
-    border-color: rgba(0, 245, 255, 0.4);
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.08);
 }
 
 /* Description toggle button */
