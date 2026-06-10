@@ -74,17 +74,12 @@ document.querySelectorAll('.nav ul a').forEach(link => {
   });
 });
 
-<<<<<<< HEAD
 function toggleDesc(id, btn) {
   const panel = document.getElementById(id);
   panel.classList.toggle('open');
   btn.classList.toggle('open');
 }
-if (window.location.hash) {
-  history.replaceState(null, null, window.location.pathname);
-  window.scrollTo(0, 0);
-}
-=======
+
 window.addEventListener("load", () => {
   if (window.location.hash) {
     history.replaceState(null, null, window.location.pathname);
@@ -93,4 +88,4 @@ window.addEventListener("load", () => {
     }, 0);
   }
 });
->>>>>>> ce03b8d (Fix nav URL hash issue)
+
