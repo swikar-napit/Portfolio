@@ -1,3 +1,11 @@
+function scrollToSection(id) {
+  const target = document.getElementById(id);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, null, window.location.pathname);
+  }
+}
+
 // Scrollspy functionality for navigation
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section");
@@ -17,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinks.forEach(link => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
+      if (link.getAttribute("data-section") === current) {
         link.classList.add("active");
       }
     });
@@ -65,12 +73,8 @@ document.querySelectorAll('.nav ul a').forEach(link => {
     document.querySelector('.nav').classList.remove('open');
     document.getElementById('hamburger').classList.remove('active');
 
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    history.replaceState(null, null, window.location.pathname);
+    const section = link.getAttribute('data-section');
+    if (section) scrollToSection(section);
   });
 });
 

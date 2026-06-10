@@ -18,12 +18,17 @@
             <h1 class="tophead">Swikar@portfolio:¬$</h1>
             <nav class="nav">
                 <ul class="list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#project">Project</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contacts">Contacts</a></li>
+                    <li><a href="javascript:void(0)" data-section="home" onclick="scrollToSection('home')">Home</a></li>
+                    <li><a href="javascript:void(0)" data-section="about" onclick="scrollToSection('about')">About</a>
+                    </li>
+                    <li> <a href="javascript:void(0)" data-section="skills"
+                            onclick="scrollToSection('skills')">Skills</a></li>
+                    <li> <a href="javascript:void(0)" data-section="project"
+                            onclick="scrollToSection('project')">Project</a></li>
+                    <li><a href="javascript:void(0)" data-section="education"
+                            onclick="scrollToSection('education')">Education</a></li>
+                    <li><a href="javascript:void(0)" data-section="contacts"
+                            onclick="scrollToSection('contacts')">Contacts</a></li>
                 </ul>
             </nav>
             <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -31,7 +36,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <button class="contact-btn" onclick="location.href='#contacts'">Contact Me</button>
+            <button class="contact-btn" onclick="scrollToSection('contacts')">Contact Me</button>
         </div>
         <main>
             <section id="home">
@@ -41,8 +46,8 @@
                         <h1 class="name">Swikar Napit</h1>
                         <p class="type">I am a.....</p>
                         <div class="home-btns">
-                            <a href="#project" class="home-btn-primary">View Projects</a>
-                            <a href="#contacts" class="home-btn-secondary">Contact Me</a>
+                            <a href="javascript:void(0)" onclick="scrollToSection('project')"class="home-btn-primary">View Projects</a>
+                            <a href="javascript:void(0)" onclick="scrollToSection('contacts')" class="home-btn-secondary">Contact Me</a>
                         </div>
                     </div>
                     <div class="home-right">
