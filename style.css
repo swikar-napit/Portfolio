@@ -785,7 +785,12 @@ nav a.active::after {
     line-height: 1.9;
 }
 
-
+@media (max-width: 768px) {
+    .ab-desc {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+}
 
 .ab-loc-row {
     display: flex;
@@ -1058,6 +1063,19 @@ nav a.active::after {
 
     .ab-achieve {
         flex: unset;
+    }
+}
+.ab-terminal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+@media (max-width: 768px) {
+    .ab-terminal-body {
+        padding: 16px;
+        gap: 12px;
     }
 }
 
