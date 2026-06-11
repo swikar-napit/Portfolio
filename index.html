@@ -16,19 +16,30 @@
         <div class="navbar">
             <h1 class="tophead">Swikar@portfolio:¬$</h1>
             <nav class="nav">
+                <div class="nav-mobile-header">
+                    <div class="nav-mobile-cmd">$ ls ./navigation</div>
+                    <div class="nav-mobile-hint">// select a section to jump</div>
+                </div>
                 <ul class="list">
-                    <li><a href="javascript:void(0)" data-section="home" onclick="scrollToSection('home')">Home</a></li>
-                    <li><a href="javascript:void(0)" data-section="about" onclick="scrollToSection('about')">About</a>
-                    </li>
-                    <li> <a href="javascript:void(0)" data-section="skills"
+                    <li><a href="javascript:void(0)" data-section="home" data-num="01"
+                            onclick="scrollToSection('home')">Home</a></li>
+                    <li><a href="javascript:void(0)" data-section="about" data-num="02"
+                            onclick="scrollToSection('about')">About</a></li>
+                    <li><a href="javascript:void(0)" data-section="skills" data-num="03"
                             onclick="scrollToSection('skills')">Skills</a></li>
-                    <li> <a href="javascript:void(0)" data-section="project"
+                    <li><a href="javascript:void(0)" data-section="project" data-num="04"
                             onclick="scrollToSection('project')">Project</a></li>
-                    <li><a href="javascript:void(0)" data-section="education"
+                    <li><a href="javascript:void(0)" data-section="education" data-num="05"
                             onclick="scrollToSection('education')">Education</a></li>
-                    <li><a href="javascript:void(0)" data-section="contacts"
+                    <li><a href="javascript:void(0)" data-section="contacts" data-num="06"
                             onclick="scrollToSection('contacts')">Contacts</a></li>
                 </ul>
+                <div class="nav-mobile-footer">
+                    <span class="nav-mobile-footer-cmd">// 6 sections found</span>
+                    <button class="nav-mobile-contact"
+                        onclick="scrollToSection('contacts'); document.querySelector('.nav').classList.remove('open'); document.getElementById('hamburger').classList.remove('active');">Contact
+                        Me →</button>
+                </div>
             </nav>
             <button class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
