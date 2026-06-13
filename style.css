@@ -1267,13 +1267,19 @@ li {
     border: 1.5px solid white;
     padding: 12px 24px;
     border-radius: 8px;
-    font-family: inherit;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-details:hover {
+    background: white;
+    color: black;
 }
 
 .btn-details:hover {
@@ -1285,35 +1291,25 @@ li {
     font-size: 0.8rem;
 }
 
-.btn-details a {
-    text-decoration: none;
-    color: inherit;
-}
 .btn-live {
     background: rgba(39, 201, 63, 0.1);
     color: #27c93f;
     border: 1.5px solid #27c93f;
     padding: 12px 24px;
     border-radius: 8px;
-    font-family: inherit;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .btn-live:hover {
     background: #27c93f;
     color: #0d1117;
-}
-
-.btn-live a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
 }
 
 .projects-container {

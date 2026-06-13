@@ -36,7 +36,7 @@ and how to get in touch.
 ---
 
 ## 📁 Project Structure
-
+```text
 Portfolio/
 
 │
@@ -45,7 +45,7 @@ Portfolio/
 ├── main.js         (Scrollspy, typewriter effect, menu toggle)
 ├── Image/          (Images and icons folder)
 └── README.md       (Project documentation)
-
+```
 ---
 
 ## 👨‍💻 Author
