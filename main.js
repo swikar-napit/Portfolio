@@ -1,10 +1,12 @@
 function handleEmail(e) {
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (!isMobile) {
-    e.preventDefault();
-    window.open('https://mail.google.com/mail/?view=cm&to=napit.swikar1@gmail.com', '_blank');
-  }
-  // On mobile: do nothing, let the default mailto: open the mail app
+  e.preventDefault();
+  const email = 'napit.swikar1@gmail.com';
+  window.location.href = 'mailto:' + email;
+  setTimeout(() => {
+    if (document.hasFocus()) {
+      window.open('https://mail.google.com/mail/?view=cm&to=' + email, '_blank');
+    }
+  }, 1000);
 }
 
 function scrollToSection(id) {
@@ -78,12 +80,13 @@ function toggleMenu() {
 
 document.querySelectorAll('.nav ul a').forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelector('.nav').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('active');
-
     const section = link.getAttribute('data-section');
-    if (section) scrollToSection(section);
+    if (section) {
+      e.preventDefault();
+      document.querySelector('.nav').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+      scrollToSection(section);
+    }
   });
 });
 
