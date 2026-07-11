@@ -1,3 +1,12 @@
+function handleEmail(e) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobile) {
+    e.preventDefault();
+    window.open('https://mail.google.com/mail/?view=cm&to=napit.swikar1@gmail.com', '_blank');
+  }
+  // On mobile: do nothing, let the default mailto: open the mail app
+}
+
 function scrollToSection(id) {
   const target = document.getElementById(id);
   if (target) {
@@ -90,4 +99,3 @@ window.addEventListener("load", () => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, 0);
 });
-
