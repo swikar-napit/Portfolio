@@ -1613,7 +1613,8 @@ li {
     transition: all 0.3s;
 }
 
-.btn-desc:hover {
+.btn-desc:hover,
+.btn-desc.open {
     border-color: var(--accent);
     color: var(--accent);
 }
