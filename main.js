@@ -99,3 +99,69 @@ window.addEventListener("load", () => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, 0);
 });
+
+// ---- Live GitHub stats (About > Stats) ----
+const GH_USERNAME = "swikar-napit";
+
+function animateCount(el, target) {
+  if (!el || isNaN(target)) return;
+  const start = parseInt(el.textContent.replace(/\D/g, ""), 10) || 0;
+  const duration = 900;
+  const startTime = performance.now();
+
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(start + (target - start) * eased);
+    el.textContent = value;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+async function loadGithubStats() {
+  const statusEl = document.getElementById("gh-stats-status");
+  const commitsEl = document.getElementById("stat-commits");
+  const reposEl = document.getElementById("stat-repos");
+  const projectsEl = document.getElementById("stat-projects");
+
+  // Projects count = number of Featured Project cards actually on this page.
+  // No GitHub call needed — it stays in sync automatically whenever you
+  // add or remove a .proj-card in the Project section.
+  const projectCount = document.querySelectorAll(".projects-container .proj-card").length;
+  if (projectCount > 0) animateCount(projectsEl, projectCount);
+
+  try {
+    // Live public repo count
+    const userRes = await fetch(`https://api.github.com/users/${GH_USERNAME}`);
+    if (userRes.ok) {
+      const userData = await userRes.json();
+      if (typeof userData.public_repos === "number") {
+        animateCount(reposEl, userData.public_repos);
+      }
+    }
+
+    // Live contribution count (used as "commits" proxy — counts commits,
+    // issues, PRs, and reviews from the last 12 months, same data GitHub's
+    // own contribution graph is built from)
+    const contribRes = await fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USERNAME}?y=last`);
+    if (contribRes.ok) {
+      const contribData = await contribRes.json();
+      const total = contribData?.total?.lastYear ?? contribData?.total?.[new Date().getFullYear()];
+      if (typeof total === "number") {
+        animateCount(commitsEl, total);
+      }
+    }
+
+    if (statusEl) statusEl.classList.remove("offline");
+  } catch (err) {
+    console.warn("GitHub stats fetch failed, showing fallback numbers:", err);
+    if (statusEl) {
+      statusEl.classList.add("offline");
+      const textEl = statusEl.querySelector(".gh-stats-text");
+      if (textEl) textEl.textContent = "offline";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadGithubStats);
