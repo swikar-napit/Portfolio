@@ -4,22 +4,20 @@
     --accent: #00f5ff;
     --card: rgba(255, 255, 255, 0.06);
     --border: #e5e7eb;
-    --top: #58a6ff;
+    --top: #58a6ff
 }
 
 * {
-
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth
 }
 
 body {
     background: linear-gradient(135deg, #0f1220, #111827);
     font-family: "JetBrains Mono", monospace;
-    color: var(--text);
-
+    color: var(--text)
 }
 
 .navbar {
@@ -33,48 +31,23 @@ body {
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(9, 11, 20, 0.88);
+    background: rgba(9, 11, 20, .88);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 245, 255, .1);
     z-index: 1000;
-    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 30px rgba(0, 0, 0, .4)
 }
-
-/* .navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1.5px;
-    background: linear-gradient(90deg, transparent, #00f5ff, #58a6ff, #00f5ff, transparent);
-    background-size: 200% 100%;
-    animation: navBorderSlide 10s linear infinite;
-}
-
-@keyframes navBorderSlide {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-} */
 
 .tophead {
     color: var(--accent);
     white-space: nowrap;
-    font-size: 20px;
-
+    font-size: 20px
 }
 
 .nav {
     display: flex;
     flex: 1;
-    /*It will cover the nav spaces doesnot feel like it is inline*/
-    justify-content: center;
-
+    justify-content: center
 }
 
 .nav ul {
@@ -83,50 +56,45 @@ body {
     gap: 40px;
     list-style: none;
     align-items: center;
-    justify-content: center;
-
+    justify-content: center
 }
 
 .contact-btn {
     padding: 8px 20px;
     cursor: pointer;
     white-space: nowrap;
-    background: transparent;
+    background: 0 0;
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: 8px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2), inset 0 0 10px rgba(0, 245, 255, 0.05);
-    transition: all 0.25s ease;
+    box-shadow: 0 0 10px rgba(0, 245, 255, .2), inset 0 0 10px rgba(0, 245, 255, .05);
+    transition: .25s
 }
 
 .contact-btn::after {
-    content: ' →';
+    content: ' →'
 }
 
 .contact-btn:hover {
-    background: rgba(0, 245, 255, 0.08);
-    box-shadow: 0 0 22px rgba(0, 245, 255, 0.45), inset 0 0 14px rgba(0, 245, 255, 0.08);
-    transform: translateY(-1px);
+    background: rgba(0, 245, 255, .08);
+    box-shadow: 0 0 22px rgba(0, 245, 255, .45), inset 0 0 14px rgba(0, 245, 255, .08);
+    transform: translateY(-1px)
 }
 
 .nav ul a {
     text-decoration: none;
     color: var(--text);
     font-weight: 500;
-    position: relative;
+    position: relative
 }
 
 nav ul a.active,
+nav ul a:focus,
 nav ul a:hover {
-    color: var(--accent);
-
-}
-
-nav ul a:focus {
-    color: var(--accent);
+    color: var(--accent)
 }
 
 section {
@@ -134,14 +102,14 @@ section {
     padding: 60px 8%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center
 }
 
 #home {
     min-height: calc(100vh - 57px);
     padding: 0 8%;
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
 #home h1 {
@@ -150,26 +118,26 @@ section {
     color: var(--text);
     line-height: 1.1;
     margin-bottom: 14px;
-    white-space: nowrap;
+    white-space: nowrap
 }
 
 #home p {
     color: var(--accent);
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     font-family: 'JetBrains Mono', monospace;
-    margin-top: 10px;
+    margin-top: 10px
 }
 
 #home p.type {
     color: var(--accent);
     font-size: clamp(1rem, 2vw, 1.3rem);
     margin-bottom: 28px;
-    margin-top: 0;
+    margin-top: 0
 }
 
 .home-left {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
 .home-inner {
@@ -177,26 +145,26 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    width: 100%;
+    width: 100%
 }
 
 .code-block {
     background: #0d1117;
-    border: 1px solid rgba(0, 245, 255, 0.2);
+    border: 1px solid rgba(0, 245, 255, .2);
     border-radius: 12px;
     overflow: hidden;
-    animation: glow 3s ease-in-out infinite;
+    animation: 3s ease-in-out infinite glow
 }
 
 @keyframes glow {
 
     0%,
     100% {
-        box-shadow: 0 0 30px rgba(0, 245, 255, 0.08);
+        box-shadow: 0 0 30px rgba(0, 245, 255, .08)
     }
 
     50% {
-        box-shadow: 0 0 50px rgba(0, 245, 255, 0.18);
+        box-shadow: 0 0 50px rgba(0, 245, 255, .18)
     }
 }
 
@@ -206,23 +174,23 @@ section {
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, .06)
 }
 
 .code-file {
     font-size: 11px;
     color: #555;
-    margin-left: 8px;
+    margin-left: 8px
 }
 
 .code-body {
     padding: 24px;
     font-size: 12px;
-    line-height: 2;
+    line-height: 2
 }
 
 .code-line {
-    display: block;
+    display: block
 }
 
 .ln {
@@ -230,35 +198,35 @@ section {
     margin-right: 16px;
     user-select: none;
     min-width: 16px;
-    display: inline-block;
+    display: inline-block
 }
 
 .kw {
-    color: #ff7b72;
+    color: #ff7b72
 }
 
 .fn {
-    color: #d2a8ff;
+    color: #d2a8ff
 }
 
 .str {
-    color: #a5d6ff;
+    color: #a5d6ff
 }
 
 .cm {
-    color: #8b949e;
+    color: #8b949e
 }
 
 .cv {
-    color: #79c0ff;
+    color: #79c0ff
 }
 
 .val {
-    color: #f8c555;
+    color: #f8c555
 }
 
 .nt {
-    color: #e5e7eb;
+    color: #e5e7eb
 }
 
 .code-cursor {
@@ -266,53 +234,51 @@ section {
     width: 8px;
     height: 14px;
     background: var(--accent);
-    animation: cblink 1s infinite;
+    animation: 1s infinite cblink;
     vertical-align: middle;
-    margin-left: 2px;
+    margin-left: 2px
 }
 
 @keyframes cblink {
 
     0%,
     49% {
-        opacity: 1;
+        opacity: 1
     }
 
-    50%,
-    100% {
-        opacity: 0;
+    100%,
+    50% {
+        opacity: 0
     }
 }
 
-/* responsive */
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .home-inner {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 40px
     }
 
     .code-block {
-        font-size: 11px;
+        font-size: 11px
     }
 
     .code-body {
-        padding: 14px;
+        padding: 14px
     }
 
     #home h1 {
         white-space: normal;
-        font-size: 2.2rem;
+        font-size: 2.2rem
     }
 }
 
 .card {
-    /* background: var(--card); */
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, .02);
     border-radius: 16px;
     box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, .06);
     width: 100%;
-    padding: 30px;
+    padding: 30px
 }
 
 nav a.active::after {
@@ -323,23 +289,22 @@ nav a.active::after {
     background: var(--accent);
     bottom: -6px;
     left: 0;
-    box-shadow: 0 0 10px var(--accent);
+    box-shadow: 0 0 10px var(--accent)
 }
 
-.nav-mobile-header,
-.nav-mobile-footer {
-    display: none;
+.nav-mobile-footer,
+.nav-mobile-header {
+    display: none
 }
 
-/* ===== HAMBURGER ===== */
 .hamburger {
     display: none;
     flex-direction: column;
     gap: 5px;
-    background: transparent;
+    background: 0 0;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 4px
 }
 
 .hamburger span {
@@ -348,28 +313,27 @@ nav a.active::after {
     height: 2px;
     background: var(--text);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: .3s
 }
 
-/* X animation when open */
-.hamburger.active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+.hamburger.active span:first-child {
+    transform: translateY(7px) rotate(45deg)
 }
 
 .hamburger.active span:nth-child(2) {
-    opacity: 0;
+    opacity: 0
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg)
 }
 
-@media (max-width: 880px) {
+@media (max-width:880px) {
     .hamburger {
         display: flex;
         margin-left: auto;
         flex-shrink: 0;
-        border: 1px solid rgba(0, 245, 255, 0.25);
+        border: 1px solid rgba(0, 245, 255, .25);
         border-radius: 8px;
         width: 36px;
         height: 36px;
@@ -377,21 +341,21 @@ nav a.active::after {
         justify-content: center;
         gap: 4px;
         padding: 6px;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        transition: border-color .2s, box-shadow .2s
     }
 
     .hamburger:hover {
-        border-color: rgba(0, 245, 255, 0.5);
-        box-shadow: 0 0 10px rgba(0, 245, 255, 0.15);
+        border-color: rgba(0, 245, 255, .5);
+        box-shadow: 0 0 10px rgba(0, 245, 255, .15)
     }
 
     .hamburger span {
         width: 16px;
-        background: #00f5ff;
+        background: #00f5ff
     }
 
     .contact-btn {
-        display: none;
+        display: none
     }
 
     .nav {
@@ -402,45 +366,45 @@ nav a.active::after {
         top: 57px;
         left: 0;
         width: 100%;
-        background: rgba(5, 8, 18, 0.97);
+        background: rgba(5, 8, 18, .97);
         backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(0, 245, 255, 0.1);
-        z-index: 999;
+        border-bottom: 1px solid rgba(0, 245, 255, .1);
+        z-index: 999
     }
 
     .nav.open {
         display: flex;
-        flex-direction: column;
+        flex-direction: column
     }
 
     .nav-mobile-header {
         padding: 14px 20px 10px;
-        border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+        border-bottom: .5px solid rgba(255, 255, 255, .05)
     }
 
     .nav-mobile-cmd {
         font-size: 10px;
         color: #00f5ff;
         letter-spacing: 1.5px;
-        margin-bottom: 3px;
+        margin-bottom: 3px
     }
 
     .nav-mobile-hint {
         font-size: 9px;
         color: #333;
-        letter-spacing: 1px;
+        letter-spacing: 1px
     }
 
     .nav ul {
         flex-direction: column;
         gap: 0;
         width: 100%;
-        padding: 6px 0;
+        padding: 6px 0
     }
 
     .nav ul li {
         width: 100%;
-        counter-increment: nav-counter;
+        counter-increment: nav-counter
     }
 
     .nav ul a {
@@ -449,11 +413,11 @@ nav a.active::after {
         gap: 12px;
         padding: 11px 20px;
         font-size: 13px;
-        border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+        border-bottom: .5px solid rgba(255, 255, 255, .04);
         color: #888;
         text-decoration: none;
-        transition: all 0.2s;
-        position: relative;
+        transition: .2s;
+        position: relative
     }
 
     .nav ul a::before {
@@ -461,7 +425,7 @@ nav a.active::after {
         font-size: 9px;
         color: #333;
         min-width: 18px;
-        transition: color 0.2s;
+        transition: color .2s
     }
 
     .nav ul a::after {
@@ -469,33 +433,33 @@ nav a.active::after {
         font-size: 11px;
         color: #222;
         margin-left: auto;
-        transition: all 0.2s;
+        transition: .2s
     }
 
     .nav ul a:hover {
-        background: rgba(0, 245, 255, 0.04);
+        background: rgba(0, 245, 255, .04);
         color: #00f5ff;
-        padding-left: 24px;
+        padding-left: 24px
     }
 
     .nav ul a:hover::before {
-        color: #00f5ff;
+        color: #00f5ff
     }
 
     .nav ul a:hover::after {
         color: #00f5ff;
-        transform: translateX(3px);
+        transform: translateX(3px)
     }
 
     .nav ul a.active {
-        background: rgba(0, 245, 255, 0.05);
+        background: rgba(0, 245, 255, .05);
         color: #00f5ff;
         border-left: 2px solid #00f5ff;
-        padding-left: 18px;
+        padding-left: 18px
     }
 
     .nav ul a.active::before {
-        color: #00f5ff;
+        color: #00f5ff
     }
 
     .nav ul a.active::after {
@@ -504,52 +468,51 @@ nav a.active::after {
         position: static;
         width: auto;
         height: auto;
-        background: none;
-        box-shadow: none;
+        background: 0 0;
+        box-shadow: none
     }
 
     .nav-mobile-footer {
         padding: 12px 20px;
-        border-top: 0.5px solid rgba(255, 255, 255, 0.05);
-        display: flex;
+        border-top: .5px solid rgba(255, 255, 255, .05);
         justify-content: space-between;
-        align-items: center;
+        align-items: center
     }
 
     .nav-mobile-footer-cmd {
         font-size: 9px;
         color: #333;
-        letter-spacing: 1px;
+        letter-spacing: 1px
     }
 
     .nav-mobile-contact {
         font-size: 11px;
         color: #00f5ff;
-        border: 1px solid rgba(0, 245, 255, 0.3);
+        border: 1px solid rgba(0, 245, 255, .3);
         padding: 5px 14px;
         border-radius: 20px;
         cursor: pointer;
-        background: transparent;
+        background: 0 0;
         font-family: 'JetBrains Mono', monospace;
-        transition: all 0.2s;
+        transition: .2s
     }
 
     .nav-mobile-contact:hover {
-        background: rgba(0, 245, 255, 0.08);
-        box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+        background: rgba(0, 245, 255, .08);
+        box-shadow: 0 0 12px rgba(0, 245, 255, .2)
     }
 
     .tophead {
-        flex-shrink: 0;
+        flex-shrink: 0
     }
 
     .ts-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
 
-    .nav-mobile-header,
-    .nav-mobile-footer {
-        display: block;
+    .nav-mobile-footer,
+    .nav-mobile-header {
+        display: block
     }
 }
 
@@ -559,22 +522,22 @@ nav a.active::after {
     height: 1.2em;
     background-color: var(--accent);
     margin-left: 2px;
-    animation: blink 1s infinite;
+    animation: 1s infinite blink;
     vertical-align: baseline;
     position: relative;
-    top: 4px;
+    top: 4px
 }
 
 @keyframes blink {
 
     0%,
     49% {
-        background-color: var(--accent);
+        background-color: var(--accent)
     }
 
-    50%,
-    100% {
-        background-color: transparent;
+    100%,
+    50% {
+        background-color: transparent
     }
 }
 
@@ -583,19 +546,19 @@ nav a.active::after {
     color: var(--accent);
     letter-spacing: 2px;
     margin-bottom: 12px;
-    opacity: 0.8;
+    opacity: .8
 }
 
 .home-btns {
     display: flex;
     gap: 14px;
     margin-top: 32px;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .home-btn-primary {
     padding: 10px 24px;
-    background: transparent;
+    background: 0 0;
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: 8px;
@@ -603,192 +566,187 @@ nav a.active::after {
     font-weight: 600;
     font-size: 13px;
     font-family: 'JetBrains Mono', monospace;
-    transition: all 0.3s;
+    transition: .3s
 }
 
 .home-btn-primary:hover {
     background: var(--accent);
     color: #0f1220;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 245, 255, .3)
 }
 
 .home-btn-secondary {
     padding: 10px 24px;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, .15);
     color: #888;
     border-radius: 8px;
     text-decoration: none;
     font-size: 13px;
     font-family: 'JetBrains Mono', monospace;
-    transition: all 0.3s;
+    transition: .3s
 }
 
 .home-btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    color: var(--text);
+    border-color: rgba(255, 255, 255, .4);
+    color: var(--text)
 }
 
-/* ===== ABOUT SECTION ===== */
 .ab-hero {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 32px
 }
 
 .ab-hero-title {
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 6px
 }
 
 .ab-hero-sub {
     font-size: 11px;
     color: #444;
     letter-spacing: 3px;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
 
 .ab-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 16px;
+    gap: 16px
 }
 
 .ab-profile {
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, .02);
+    border: .5px solid rgba(255, 255, 255, .08);
     border-radius: 14px;
     padding: 28px;
     display: flex;
     flex-direction: column;
     gap: 18px;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: border-color .3s, transform .3s, box-shadow .3s
 }
 
 .ab-profile:hover {
-    border-color: rgba(0, 245, 255, 0.3);
+    border-color: rgba(0, 245, 255, .3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 245, 255, 0.06);
+    box-shadow: 0 8px 24px rgba(0, 245, 255, .06)
 }
 
 .ab-profile-top {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 16px
 }
 
-/* ===== PROFILE TERMINAL BAR ===== */
 .ab-profile-bar {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
     border-radius: 10px 10px 0 0;
-    margin: -28px -28px 0 -28px;
-    margin-bottom: 18px;
+    margin: -28px -28px 18px
 }
 
 .ab-profile-bar-label {
     font-size: 11px;
     color: #555;
-    margin-left: 8px;
+    margin-left: 8px
 }
 
-/* ===== INTERACTIVE TAGS ===== */
 .ab-tags-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 8px
 }
 
 .ab-tag {
     font-size: 10px;
     padding: 6px 12px;
     border-radius: 20px;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border: .5px solid rgba(255, 255, 255, .1);
     color: #666;
-    background: rgba(255, 255, 255, 0.02);
-    letter-spacing: 0.5px;
-    transition: all 0.25s;
-    cursor: default;
+    background: rgba(255, 255, 255, .02);
+    letter-spacing: .5px;
+    transition: .25s;
+    cursor: default
 }
 
 .ab-tag::before {
     content: "▸ ";
     color: #333;
-    transition: color 0.25s;
+    transition: color .25s
 }
 
 .ab-tag:hover {
     border-left-color: var(--accent);
     color: var(--text);
-    background: rgba(0, 245, 255, 0.04);
-    transform: translateX(4px);
+    background: rgba(0, 245, 255, .04);
+    transform: translateX(4px)
 }
 
 .ab-tag:hover::before {
-    color: var(--accent);
+    color: var(--accent)
 }
 
-
 .ab-tag.accent {
-    border-color: rgba(0, 245, 255, 0.25);
+    border-color: rgba(0, 245, 255, .25);
     color: #00f5ff;
-    background: rgba(0, 245, 255, 0.05);
+    background: rgba(0, 245, 255, .05)
 }
 
 .ab-tag.accent:hover {
     border-left-color: var(--accent);
     color: #00f5ff;
-    background: rgba(0, 245, 255, 0.06);
-    box-shadow: 2px 0 12px rgba(0, 245, 255, 0.08);
+    background: rgba(0, 245, 255, .06);
+    box-shadow: 2px 0 12px rgba(0, 245, 255, .08)
 }
 
 .ab-avatar {
     width: 56px;
     height: 56px;
     border-radius: 14px;
-    background: rgba(0, 245, 255, 0.08);
-    border: 1px solid rgba(0, 245, 255, 0.25);
+    background: rgba(0, 245, 255, .08);
+    border: 1px solid rgba(0, 245, 255, .25);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     font-weight: 700;
     color: #00f5ff;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .ab-profile-name {
     font-size: 16px;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 4px;
+    margin-bottom: 4px
 }
 
 .ab-profile-role {
     font-size: 11px;
     color: #00f5ff;
-    letter-spacing: 1px;
+    letter-spacing: 1px
 }
 
 .ab-divider {
-    height: 0.5px;
-    background: rgba(255, 255, 255, 0.06);
+    height: .5px;
+    background: rgba(255, 255, 255, .06)
 }
 
 .ab-desc {
     font-size: 12px;
     color: #777;
-    line-height: 1.9;
+    line-height: 1.9
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .ab-desc {
         font-size: 11px;
-        line-height: 1.7;
+        line-height: 1.7
     }
 }
 
@@ -797,9 +755,9 @@ nav a.active::after {
     align-items: center;
     gap: 10px;
     padding: 12px 14px;
-    background: rgba(88, 166, 255, 0.05);
-    border: 0.5px solid rgba(88, 166, 255, 0.15);
-    border-radius: 10px;
+    background: rgba(88, 166, 255, .05);
+    border: .5px solid rgba(88, 166, 255, .15);
+    border-radius: 10px
 }
 
 .ab-loc-dot {
@@ -808,7 +766,7 @@ nav a.active::after {
     border-radius: 50%;
     background: #58a6ff;
     flex-shrink: 0;
-    animation: locpulse 2s infinite;
+    animation: 2s infinite locpulse
 }
 
 @keyframes locpulse {
@@ -816,40 +774,40 @@ nav a.active::after {
     0%,
     100% {
         opacity: 1;
-        box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4);
+        box-shadow: 0 0 0 0 rgba(88, 166, 255, .4)
     }
 
     50% {
-        opacity: 0.7;
-        box-shadow: 0 0 0 6px rgba(88, 166, 255, 0);
+        opacity: .7;
+        box-shadow: 0 0 0 6px rgba(88, 166, 255, 0)
     }
 }
 
 .ab-loc-text {
     font-size: 11px;
-    color: #58a6ff;
+    color: #58a6ff
 }
 
 .ab-right {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    height: 100%;
+    height: 100%
 }
 
 .ab-achieve {
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, .02);
+    border: .5px solid rgba(255, 255, 255, .08);
     border-radius: 14px;
     padding: 20px;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    flex: 1;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    flex: 1
 }
 
 .ab-achieve:hover {
-    border-color: rgba(167, 139, 250, 0.3);
+    border-color: rgba(167, 139, 250, .3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.06);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, .06)
 }
 
 .ab-achieve-label {
@@ -857,7 +815,7 @@ nav a.active::after {
     color: #a78bfa;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 14px
 }
 
 .ab-badge {
@@ -866,73 +824,73 @@ nav a.active::after {
     gap: 12px;
     padding: 10px 12px;
     border-radius: 8px;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
-    transition: background 0.2s, transform 0.2s;
-    margin: 0 -12px;
+    border-bottom: .5px solid rgba(255, 255, 255, .04);
+    transition: background .2s, transform .2s;
+    margin: 0 -12px
 }
 
 .ab-badge:hover {
-    background: rgba(167, 139, 250, 0.06);
-    transform: translateX(4px);
+    background: rgba(167, 139, 250, .06);
+    transform: translateX(4px)
 }
 
 .ab-badge:hover .ab-badge-name {
-    color: #a78bfa;
+    color: #a78bfa
 }
 
 .ab-badge:hover .ab-badge-icon {
-    background: rgba(167, 139, 250, 0.2);
-    border-color: rgba(167, 139, 250, 0.4);
+    background: rgba(167, 139, 250, .2);
+    border-color: rgba(167, 139, 250, .4)
 }
 
 .ab-badge-name {
     font-size: 12px;
     color: var(--text);
     font-weight: 600;
-    transition: color 0.2s;
+    transition: color .2s
 }
 
 .ab-badge-icon {
     width: 32px;
     height: 32px;
     border-radius: 8px;
-    background: rgba(167, 139, 250, 0.1);
-    border: 0.5px solid rgba(167, 139, 250, 0.2);
+    background: rgba(167, 139, 250, .1);
+    border: .5px solid rgba(167, 139, 250, .2);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
     flex-shrink: 0;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background .2s, border-color .2s
 }
 
 .ab-badge:last-child {
     border-bottom: none;
-    padding-bottom: 0;
+    padding-bottom: 0
 }
 
 .ab-badge:first-of-type {
-    padding-top: 0;
+    padding-top: 0
 }
 
 .ab-badge-desc {
     font-size: 10px;
     color: #555;
-    margin-top: 2px;
+    margin-top: 2px
 }
 
 .ab-stats {
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, .02);
+    border: .5px solid rgba(255, 255, 255, .08);
     border-radius: 14px;
     padding: 20px;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: border-color .3s, transform .3s, box-shadow .3s
 }
 
 .ab-stats:hover {
-    border-color: rgba(39, 201, 63, 0.3);
+    border-color: rgba(39, 201, 63, .3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(39, 201, 63, 0.06);
+    box-shadow: 0 8px 24px rgba(39, 201, 63, .06)
 }
 
 .ab-stats-label {
@@ -943,35 +901,35 @@ nav a.active::after {
     color: #27c93f;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 14px
 }
 
 .ab-stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 8px
 }
 
 .ab-stat {
     text-align: center;
     padding: 12px 6px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, .02);
+    border: .5px solid rgba(255, 255, 255, .05);
+    border-radius: 10px
 }
 
 .ab-stat-num {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #00f5ff;
+    color: #00f5ff
 }
 
 .ab-stat-label {
     font-size: 9px;
     color: #555;
     margin-top: 3px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    letter-spacing: .5px;
+    text-transform: uppercase
 }
 
 .ab-music {
@@ -979,16 +937,16 @@ nav a.active::after {
     align-items: center;
     gap: 14px;
     padding: 16px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, .02);
+    border: .5px solid rgba(255, 255, 255, .08);
     border-radius: 14px;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: border-color .3s, transform .3s, box-shadow .3s
 }
 
 .ab-music:hover {
-    border-color: rgba(167, 139, 250, 0.3);
+    border-color: rgba(167, 139, 250, .3);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.06);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, .06)
 }
 
 .ab-music-bars {
@@ -996,50 +954,50 @@ nav a.active::after {
     align-items: flex-end;
     gap: 3px;
     height: 24px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .ab-bar {
     width: 4px;
     border-radius: 2px;
     background: #a78bfa;
-    animation: barwave 1.2s ease-in-out infinite;
+    animation: 1.2s ease-in-out infinite barwave
 }
 
-.ab-bar:nth-child(1) {
+.ab-bar:first-child {
     height: 8px;
-    animation-delay: 0s;
+    animation-delay: 0s
 }
 
 .ab-bar:nth-child(2) {
     height: 16px;
-    animation-delay: 0.15s;
+    animation-delay: .15s
 }
 
 .ab-bar:nth-child(3) {
     height: 12px;
-    animation-delay: 0.3s;
+    animation-delay: .3s
 }
 
 .ab-bar:nth-child(4) {
     height: 20px;
-    animation-delay: 0.45s;
+    animation-delay: .45s
 }
 
 .ab-bar:nth-child(5) {
     height: 10px;
-    animation-delay: 0.6s;
+    animation-delay: .6s
 }
 
 @keyframes barwave {
 
     0%,
     100% {
-        transform: scaleY(0.4);
+        transform: scaleY(.4)
     }
 
     50% {
-        transform: scaleY(1);
+        transform: scaleY(1)
     }
 }
 
@@ -1047,139 +1005,136 @@ nav a.active::after {
     font-size: 12px;
     color: var(--text);
     font-weight: 600;
-    margin-bottom: 3px;
+    margin-bottom: 3px
 }
 
 .ab-music-sub {
     font-size: 10px;
-    color: #555;
+    color: #555
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .ab-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 
     .ab-right {
-        height: auto;
+        height: auto
     }
 
     .ab-achieve {
-        flex: unset;
+        flex: unset
     }
 }
+
 .ab-terminal-body {
     padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 18px
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .ab-terminal-body {
         padding: 16px;
-        gap: 12px;
+        gap: 12px
     }
 }
 
 section h2 {
     margin-bottom: 12px;
-    font-size: 20px;
+    font-size: 20px
 }
 
-p,
-li {
-    /* color: var(--muted); */
+li,
+p {
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 14px
 }
-
 
 .dots {
     display: flex;
-    gap: 8px;
+    gap: 8px
 }
 
 .dot {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
+    border-radius: 50%
 }
 
 .red {
-    background: #ff5f56;
+    background: #ff5f56
 }
 
 .yellow {
-    background: #ffbd2e;
+    background: #ffbd2e
 }
 
 .green {
-    background: #27c93f;
+    background: #27c93f
 }
 
-/* ===== TECH STACK ===== */
 .skilltopic {
     text-align: center;
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(1.4rem, 3vw, 2rem)
 }
 
 .ts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-top: 10px;
+    margin-top: 10px
 }
 
 .ts-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 10px;
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    animation: fadeInUp 0.5s ease both;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    animation: .5s both fadeInUp
 }
 
 .ts-card:hover {
-    border-color: rgba(0, 245, 255, 0.4);
+    border-color: rgba(0, 245, 255, .4);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 245, 255, 0.07);
+    box-shadow: 0 8px 24px rgba(0, 245, 255, .07)
 }
 
-.ts-card:nth-child(1) {
-    animation-delay: 0.1s;
+.ts-card:first-child {
+    animation-delay: .1s
 }
 
 .ts-card:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: .2s
 }
 
 .ts-card:nth-child(3) {
-    animation-delay: 0.3s;
+    animation-delay: .3s
 }
 
 .ts-card:nth-child(4) {
-    animation-delay: 0.4s;
+    animation-delay: .4s
 }
 
 .ts-bar {
     display: flex;
     align-items: center;
     padding: 10px 14px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    /* brighter line */
-    gap: 8px;
+    background: rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    gap: 8px
 }
 
 .ts-title-bar {
     font-size: 11px;
     color: #555;
-    margin-left: 8px;
+    margin-left: 8px
 }
 
 .ts-card-inner {
-    padding: 16px;
+    padding: 16px
 }
 
 .ts-card-title {
@@ -1188,86 +1143,78 @@ li {
     font-weight: 600;
     margin-bottom: 12px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, .06)
 }
 
 .ts-card-title::before {
     content: "$ ";
-    color: var(--accent);
+    color: var(--accent)
 }
 
 .ts-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 7px
 }
 
 .ts-tag {
     font-size: 11px;
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, .1);
     color: #aaa;
-    background: rgba(255, 255, 255, 0.03);
-    transition: all 0.2s;
-    cursor: default;
+    background: rgba(255, 255, 255, .03);
+    transition: .2s;
+    cursor: default
 }
 
 .ts-tag:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(0, 245, 255, 0.05);
+    background: rgba(0, 245, 255, .05)
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(16px)
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0)
     }
 }
 
-@media (max-width: 768px) {
-    .ts-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Tech Tags */
 .tags-container {
     margin-top: 20px;
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .tag {
     border: 1px solid #444;
     padding: 5px 15px;
     border-radius: 8px;
-    font-size: 0.75rem;
+    font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: border-color 0.3s ease;
+    transition: border-color .3s
 }
 
-/* Action Buttons */
 .actions {
     margin-top: 30px;
     display: flex;
     gap: 12px;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .btn-details {
-    background: transparent;
-    color: white;
-    border: 1.5px solid white;
+    background: 0 0;
+    color: #fff;
+    border: 1.5px solid #fff;
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 13px;
@@ -1276,26 +1223,21 @@ li {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    transition: .3s;
+    text-decoration: none
 }
 
 .btn-details:hover {
-    background: white;
-    color: black;
-}
-
-.btn-details:hover {
-    background: white;
-    color: black;
+    background: #fff;
+    color: #000
 }
 
 .btn-details span {
-    font-size: 0.8rem;
+    font-size: .8rem
 }
 
 .btn-live {
-    background: rgba(39, 201, 63, 0.1);
+    background: rgba(39, 201, 63, .1);
     color: #27c93f;
     border: 1.5px solid #27c93f;
     padding: 12px 24px;
@@ -1306,132 +1248,129 @@ li {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    transition: .3s;
+    text-decoration: none
 }
 
 .btn-live:hover {
     background: #27c93f;
-    color: #0d1117;
+    color: #0d1117
 }
 
 .projects-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 20px
 }
 
-/* Large tablets (≤ 1024px) */
-@media (max-width: 1024px) {
+@media (max-width:1024px) {
     .navbar {
-        padding: 15px 25px;
+        padding: 15px 25px
     }
 
     .nav ul {
-        gap: 25px;
+        gap: 25px
     }
 
     section {
-        padding: 80px 6%;
+        padding: 80px 6%
     }
 }
 
-/* Tablets (≤ 768px) */
-@media (max-width: 768px) {
+@media (max-width:768px) {
+    .ts-grid {
+        grid-template-columns: 1fr
+    }
+
     .navbar {
-        padding: 12px 20px;
+        padding: 12px 20px
     }
 
     .nav ul {
         gap: 15px;
-        font-size: 13px;
+        font-size: 13px
     }
 
     section {
-        padding: 60px 5%;
+        padding: 60px 5%
     }
 
     .skill-card {
-        min-width: 45%;
+        min-width: 45%
     }
 
     .terminal-window {
-        min-width: 100%;
+        min-width: 100%
     }
 }
 
-/* Mobile (≤ 600px) */
-@media (max-width: 600px) {
+@media (max-width:600px) {
     section {
-        padding: 50px 4%;
+        padding: 50px 4%
     }
 
-    .card {
-        padding: 16px;
-    }
-
+    .card,
     .terminal-body {
-        padding: 16px;
+        padding: 16px
     }
 
     .skill-card {
-        min-width: 100%;
+        min-width: 100%
     }
 
     .terminal-window {
         min-width: 100%;
-        max-width: 100%;
+        max-width: 100%
     }
 }
 
-/* Very small phones (≤ 380px) */
-@media (max-width: 380px) {
+@media (max-width:380px) {
     .tophead {
-        font-size: 14px;
+        font-size: 14px
     }
 
     .nav ul {
         font-size: 11px;
-        gap: 8px;
+        gap: 8px
     }
 
     #home h1 {
-        font-size: 1.3rem;
+        font-size: 1.3rem
     }
 }
 
 .proj-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.3s;
+    transition: border-color .3s
 }
 
 .proj-card:hover {
-    border-color: rgba(0, 245, 255, 0.3);
+    border-color: rgba(0, 245, 255, .3)
 }
 
 .proj-bar {
     display: flex;
     align-items: center;
     padding: 10px 18px;
-    background: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    gap: 10px;
+    background: rgba(0, 0, 0, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    gap: 10px
 }
 
 .proj-user {
     font-size: 12px;
     color: #666;
     flex: 1;
-    margin-left: 10px;
+    margin-left: 10px
 }
 
 .proj-year {
     font-size: 12px;
-    color: #666;
+    color: #666
 }
 
 .proj-body {
@@ -1439,39 +1378,39 @@ li {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 2rem;
-    align-items: start;
+    align-items: start
 }
 
 .proj-prompt {
     font-size: 12px;
     color: var(--accent);
-    margin-bottom: 6px;
+    margin-bottom: 6px
 }
 
 .proj-name {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 4px;
+    margin-bottom: 4px
 }
 
 .proj-subtitle {
     font-size: 13px;
     color: #666;
-    margin-bottom: 14px;
+    margin-bottom: 14px
 }
 
 .proj-line {
     height: 1px;
-    background: rgba(255, 255, 255, 0.07);
-    margin: 0 0 16px;
+    background: rgba(255, 255, 255, .07);
+    margin: 0 0 16px
 }
 
 .proj-desc {
     font-size: 13px;
     color: #888;
     line-height: 1.7;
-    margin-bottom: 18px;
+    margin-bottom: 18px
 }
 
 .proj-right {
@@ -1479,14 +1418,14 @@ li {
     flex-direction: column;
     align-items: flex-end;
     gap: 12px;
-    padding-top: 4px;
+    padding-top: 4px
 }
 
 .proj-number {
     font-size: 3.5rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.06);
-    line-height: 1;
+    color: rgba(255, 255, 255, .06);
+    line-height: 1
 }
 
 .proj-status {
@@ -1495,9 +1434,9 @@ li {
     gap: 6px;
     font-size: 11px;
     color: #27c93f;
-    border: 1px solid rgba(39, 201, 63, 0.3);
+    border: 1px solid rgba(39, 201, 63, .3);
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 20px
 }
 
 .proj-status-dot {
@@ -1505,7 +1444,7 @@ li {
     height: 6px;
     border-radius: 50%;
     background: #27c93f;
-    animation: pulse 2s infinite;
+    animation: 2s infinite pulse
 }
 
 @keyframes pulse {
@@ -1516,69 +1455,64 @@ li {
     }
 
     50% {
-        opacity: 0.3
+        opacity: .3
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
     .proj-body {
         grid-template-columns: 1fr;
+        padding: 20px
     }
 
     .proj-right {
         flex-direction: row;
-        align-items: center;
+        align-items: center
     }
 
     .proj-number {
-        font-size: 2rem;
-    }
-
-    .proj-body {
-        padding: 20px;
+        font-size: 2rem
     }
 }
 
-/* ===== PROJECT DESCRIPTION TOGGLE ===== */
 .proj-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+    transition: max-height .4s, opacity .3s;
+    opacity: 0
 }
 
 .proj-details.open {
     max-height: 500px;
-    opacity: 1;
+    opacity: 1
 }
 
 .proj-details-inner {
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, .07);
     margin-top: 16px;
     padding-top: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 20px
 }
 
 .proj-details-inner h4 {
     color: var(--accent);
     font-size: 13px;
-    margin-bottom: 12px;
+    margin-bottom: 12px
 }
 
 .proj-details-inner ul {
     list-style: none;
-    padding: 0;
+    padding: 0
 }
 
 .proj-details-inner ul li {
     font-size: 12px;
     color: #888;
-    padding: 4px 0;
-    padding-left: 14px;
+    padding: 4px 0 4px 14px;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.5
 }
 
 .proj-details-inner ul li::before {
@@ -1586,24 +1520,23 @@ li {
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-size: 10px;
+    font-size: 10px
 }
 
 .proj-highlight {
-    background: rgba(0, 245, 255, 0.05);
-    border: 1px solid rgba(0, 245, 255, 0.15);
+    background: rgba(0, 245, 255, .05);
+    border: 1px solid rgba(0, 245, 255, .15);
     border-radius: 8px;
     padding: 12px 16px;
     font-size: 12px;
     color: #aaa;
-    line-height: 1.6;
+    line-height: 1.6
 }
 
-/* Description toggle button */
 .btn-desc {
-    background: transparent;
+    background: 0 0;
     color: var(--text);
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, .2);
     padding: 12px 24px;
     border-radius: 8px;
     font-family: inherit;
@@ -1613,115 +1546,114 @@ li {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s;
+    transition: .3s
 }
 
-.btn-desc:hover,
-.btn-desc.open {
+.btn-desc.open,
+.btn-desc:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent)
 }
 
 .btn-desc .arrow {
-    transition: transform 0.3s ease;
-    font-size: 11px;
+    transition: transform .3s;
+    font-size: 11px
 }
 
 .btn-desc.open .arrow {
-    transform: rotate(180deg);
+    transform: rotate(180deg)
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
     .proj-details-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 }
 
-/* Education Section */
 .ed-title {
     text-align: center;
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 6px
 }
 
 .ed-sub {
     text-align: center;
     font-size: 12px;
     color: #555;
-    margin-bottom: 24px;
+    margin-bottom: 24px
 }
 
 .ed-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 16px
 }
 
 .ed-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .09);
     border-radius: 10px;
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    animation: edFade 0.5s ease both;
+    transition: border-color .3s, transform .3s;
+    animation: .5s both edFade
 }
 
 .ed-card:hover {
-    border-color: rgba(0, 245, 255, 0.35);
-    transform: translateY(-3px);
+    border-color: rgba(0, 245, 255, .35);
+    transform: translateY(-3px)
 }
 
-.ed-card:nth-child(1) {
-    animation-delay: 0.1s;
+.ed-card:first-child {
+    animation-delay: .1s
 }
 
 .ed-card:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: .2s
 }
 
 .ed-bar {
     display: flex;
     align-items: center;
     padding: 9px 14px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    gap: 8px;
+    background: rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    gap: 8px
 }
 
 .ed-bar-label {
     font-size: 11px;
     color: #555;
-    margin-left: 8px;
+    margin-left: 8px
 }
 
 .ed-inner {
-    padding: 20px;
+    padding: 20px
 }
 
 .ed-item {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, .05)
 }
 
 .ed-name {
     font-size: 13px;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 3px;
+    margin-bottom: 3px
 }
 
 .ed-degree {
     font-size: 11px;
     color: var(--accent);
-    margin-bottom: 3px;
+    margin-bottom: 3px
 }
 
 .ed-year {
     font-size: 10px;
-    color: #555;
+    color: #555
 }
 
 .ed-badge {
@@ -1730,10 +1662,10 @@ li {
     gap: 5px;
     font-size: 10px;
     color: #27c93f;
-    border: 1px solid rgba(39, 201, 63, 0.25);
+    border: 1px solid rgba(39, 201, 63, .25);
     padding: 2px 8px;
     border-radius: 20px;
-    margin-top: 5px;
+    margin-top: 5px
 }
 
 .ed-badge-dot {
@@ -1741,33 +1673,33 @@ li {
     height: 5px;
     border-radius: 50%;
     background: #27c93f;
-    animation: pulse 2s infinite;
+    animation: 2s infinite pulse
 }
 
 .ed-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.05);
-    margin: 12px 0;
+    background: rgba(255, 255, 255, .05);
+    margin: 12px 0
 }
 
 .ed-path {
     font-size: 11px;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
 
 .ed-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 6px
 }
 
 .ed-list li {
     font-size: 12px;
     color: #777;
     padding-left: 14px;
-    position: relative;
+    position: relative
 }
 
 .ed-list li::before {
@@ -1775,14 +1707,14 @@ li {
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-size: 10px;
+    font-size: 10px
 }
 
 .ed-cert-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 0;
+    padding: 10px 0
 }
 
 .ed-cert-dot {
@@ -1790,40 +1722,40 @@ li {
     height: 8px;
     border-radius: 50%;
     background: var(--accent);
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .ed-cert-name {
     font-size: 13px;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 3px;
+    margin-bottom: 3px
 }
 
 .ed-cert-org {
     font-size: 11px;
-    color: #666;
+    color: #666
 }
 
 .ed-summary {
-    background: rgba(0, 245, 255, 0.03);
-    border: 1px solid rgba(0, 245, 255, 0.1);
+    background: rgba(0, 245, 255, .03);
+    border: 1px solid rgba(0, 245, 255, .1);
     border-radius: 10px;
     padding: 16px 20px;
     margin-top: 4px;
-    animation: edFade 0.5s ease 0.3s both;
+    animation: .5s .3s both edFade
 }
 
 .ed-summary-cmd {
     font-size: 11px;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
 
 .ed-summary-items {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 6px
 }
 
 .ed-summary-item {
@@ -1831,58 +1763,57 @@ li {
     color: #777;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 8px
 }
 
 .ed-summary-item::before {
     content: "✓";
     color: #27c93f;
-    font-size: 11px;
+    font-size: 11px
 }
 
 @keyframes edFade {
     from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(14px)
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0)
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .ed-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 
     .ed-summary {
-        padding: 12px 14px;
+        padding: 12px 14px
     }
 }
 
-/* Contact section*/
 .ct-title {
     text-align: center;
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 6px
 }
 
 .ct-sub {
     text-align: center;
     font-size: 12px;
     color: #555;
-    margin-bottom: 28px;
+    margin-bottom: 28px
 }
 
 .ct-top {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 12px
 }
 
 .ct-card {
@@ -1893,9 +1824,9 @@ li {
     flex-direction: column;
     gap: 12px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: .3s;
     cursor: pointer;
-    position: relative;
+    position: relative
 }
 
 .ct-card .ct-arrow {
@@ -1904,54 +1835,54 @@ li {
     right: 14px;
     opacity: 0;
     transform: translate(-4px, 4px);
-    transition: all 0.3s ease;
+    transition: .3s;
     font-size: 14px;
-    color: #555;
+    color: #555
 }
 
 .ct-card:hover .ct-arrow {
     opacity: 1;
-    transform: translate(0, 0);
+    transform: translate(0, 0)
 }
 
 .ct-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px)
 }
 
 .purple {
-    border: 1px solid #2d1f4e;
+    border: 1px solid #2d1f4e
 }
 
 .purple:hover {
     border-color: #7c3aed;
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
+    box-shadow: 0 0 20px rgba(124, 58, 237, .25)
 }
 
 .ct-white {
-    border: 1px solid #1e2533;
+    border: 1px solid #1e2533
 }
 
 .ct-white:hover {
     border-color: #444;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(255, 255, 255, .08)
 }
 
 .ct-blue {
-    border: 1px solid #0c2340;
+    border: 1px solid #0c2340
 }
 
 .ct-blue:hover {
     border-color: #0077b5;
-    box-shadow: 0 0 20px rgba(0, 119, 181, 0.25);
+    box-shadow: 0 0 20px rgba(0, 119, 181, .25)
 }
 
 .ct-yellow {
-    border: 1px solid #2a2000;
+    border: 1px solid #2a2000
 }
 
 .ct-yellow:hover {
     border-color: #eab308;
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.25);
+    box-shadow: 0 0 20px rgba(234, 179, 8, .25)
 }
 
 .ct-icon {
@@ -1961,37 +1892,37 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .ct-icon-purple {
-    background: rgba(124, 58, 237, 0.15);
-    border: 1px solid rgba(124, 58, 237, 0.3);
+    background: rgba(124, 58, 237, .15);
+    border: 1px solid rgba(124, 58, 237, .3)
 }
 
 .ct-icon-white {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12)
 }
 
 .ct-icon-blue {
-    background: rgba(0, 119, 181, 0.15);
-    border: 1px solid rgba(0, 119, 181, 0.3);
+    background: rgba(0, 119, 181, .15);
+    border: 1px solid rgba(0, 119, 181, .3)
 }
 
 .ct-icon-yellow {
-    background: rgba(234, 179, 8, 0.15);
-    border: 1px solid rgba(234, 179, 8, 0.3);
+    background: rgba(234, 179, 8, .15);
+    border: 1px solid rgba(234, 179, 8, .3)
 }
 
 .ct-icon-cyan {
-    background: rgba(0, 245, 255, 0.08);
-    border: 1px solid rgba(0, 245, 255, 0.2);
+    background: rgba(0, 245, 255, .08);
+    border: 1px solid rgba(0, 245, 255, .2)
 }
 
 .ct-icon-gold {
-    background: rgba(234, 179, 8, 0.08);
-    border: 1px solid rgba(234, 179, 8, 0.2);
+    background: rgba(234, 179, 8, .08);
+    border: 1px solid rgba(234, 179, 8, .2)
 }
 
 .ct-label {
@@ -1999,20 +1930,20 @@ li {
     color: #555;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 4px
 }
 
 .ct-value {
     font-size: 12px;
     font-weight: 600;
     color: var(--text);
-    word-break: break-all;
+    word-break: break-all
 }
 
 .ct-bottom {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 12px
 }
 
 .ct-info {
@@ -2023,7 +1954,7 @@ li {
     display: flex;
     align-items: center;
     gap: 14px;
-    transition: all 0.3s;
+    transition: .3s
 }
 
 .ct-info-icon {
@@ -2033,7 +1964,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .ct-info-label {
@@ -2041,53 +1972,51 @@ li {
     color: #555;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 4px
 }
 
 .ct-info-value {
     font-size: 14px;
     font-weight: 700;
-    color: var(--text);
+    color: var(--text)
 }
 
 .ct-info-sub {
     font-size: 10px;
     color: #555;
-    margin-top: 3px;
+    margin-top: 3px
 }
 
-/* FOr mobile view */
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .ct-top {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
 
     .ct-bottom {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width:400px) {
     .ct-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 }
 
-/* ===== FOOTER ===== */
 .footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, .06);
     padding: 24px 8%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 6px
 }
 
 .footer p {
     font-size: 11px;
-    color: #444;
+    color: #444
 }
-/* Live GitHub stats status badge */
+
 .gh-stats-status {
     display: inline-flex;
     align-items: center;
@@ -2096,13 +2025,13 @@ li {
     font-size: 10px;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.08em;
+    letter-spacing: .08em;
     color: #4ade80;
     text-transform: lowercase;
     padding: 4px 9px 4px 7px;
-    background: rgba(74, 222, 128, 0.08);
-    border: 1px solid rgba(74, 222, 128, 0.35);
-    border-radius: 20px;
+    background: rgba(74, 222, 128, .08);
+    border: 1px solid rgba(74, 222, 128, .35);
+    border-radius: 20px
 }
 
 .gh-stats-dot {
@@ -2111,28 +2040,31 @@ li {
     border-radius: 50%;
     background: #4ade80;
     box-shadow: 0 0 6px #4ade80;
-    animation: gh-pulse 1.6s ease-in-out infinite;
+    animation: 1.6s ease-in-out infinite gh-pulse
 }
 
 @keyframes gh-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1)
     }
+
     50% {
-        opacity: 0.4;
-        transform: scale(0.75);
+        opacity: .4;
+        transform: scale(.75)
     }
 }
 
 .gh-stats-status.offline {
     color: #f87171;
-    background: rgba(248, 113, 113, 0.08);
-    border-color: rgba(248, 113, 113, 0.35);
+    background: rgba(248, 113, 113, .08);
+    border-color: rgba(248, 113, 113, .35)
 }
 
 .gh-stats-status.offline .gh-stats-dot {
     background: #f87171;
     box-shadow: 0 0 6px #f87171;
-    animation: none;
+    animation: none
 }
