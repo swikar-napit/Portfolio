@@ -202,15 +202,15 @@
                                 <div class="ab-stats-label">// stats <span id="gh-stats-status" class="gh-stats-status"><span class="gh-stats-dot"></span><span class="gh-stats-text">live</span></span></div>
                                 <div class="ab-stats-grid">
                                     <div class="ab-stat">
-                                        <div class="ab-stat-num" id="stat-commits">0</div>
+                                        <div class="ab-stat-num" id="stat-commits">135</div>
                                         <div class="ab-stat-label">commits</div>
                                     </div>
                                     <div class="ab-stat">
-                                        <div class="ab-stat-num" id="stat-projects">0</div>
+                                        <div class="ab-stat-num" id="stat-projects">4</div>
                                         <div class="ab-stat-label">projects</div>
                                     </div>
                                     <div class="ab-stat">
-                                        <div class="ab-stat-num" id="stat-repos">0</div>
+                                        <div class="ab-stat-num" id="stat-repos">7</div>
                                         <div class="ab-stat-label">repos</div>
                                     </div>
                                 </div>
@@ -553,6 +553,87 @@
                                     <span class="proj-number">03</span>
                                     <div class="proj-status" style="color:#eab308;">
                                         <div class="proj-status-dot" style="background:#eab308; box-shadow: 0 0 6px #eab308;"></div>in dev
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proj-card">
+                            <div class="proj-bar">
+                                <div class="dots">
+                                    <div class="dot red"></div>
+                                    <div class="dot yellow"></div>
+                                    <div class="dot green"></div>
+                                </div>
+                                <span class="proj-user">tanpura-web@terminal</span>
+                                <span class="proj-year">2026</span>
+                            </div>
+                            <div class="proj-body">
+                                <div class="proj-left">
+                                    <p class="proj-prompt">$ ./run project</p>
+                                    <h2 class="proj-name">Web Tanpura</h2>
+                                    <p class="proj-subtitle">Browser-Based Tanpura Drone Player</p>
+                                    <div class="proj-line"></div>
+                                    <p class="proj-desc">A browser-based tanpura drone for daily riyaz — built for
+                                        Nepali classical music students and performers. Uses real recorded samples
+                                        with seamless looping via the Web Audio API, letting users pick a pitch,
+                                        toggle Pancham/Madhyam shruthi, and control volume in real time.</p>
+                                    <div class="tags-container">
+                                        <span class="tag">HTML5</span>
+                                        <span class="tag">CSS3</span>
+                                        <span class="tag">JS</span>
+                                        <span class="tag">Web Audio API</span>
+                                    </div>
+                                    <div class="actions">
+                                        <a href="https://tanpura-web.vercel.app/" target="_blank" class="btn-live">
+                                            <svg width="15" height="15" fill="none" stroke="currentColor"
+                                                stroke-width="2" viewBox="0 0 24 24"
+                                                style="margin-right:6px;vertical-align:middle;">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                <path d="M15 3h6v6" />
+                                                <path d="M10 14 21 3" />
+                                            </svg>Live Demo
+                                        </a>
+                                        <a href="https://github.com/swikar-napit/tanpura-web" target="_blank"
+                                            class="btn-details">
+                                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"
+                                                style="margin-right:6px;vertical-align:middle;">
+                                                <path
+                                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                                            </svg>Source Code
+                                        </a>
+                                        <button class="btn-desc" onclick="toggleDesc('proj4', this)">
+                                            View Details <span class="arrow">▼</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="proj-details" id="proj4">
+                                        <div class="proj-details-inner">
+                                            <div>
+                                                <h4>$ Features</h4>
+                                                <ul>
+                                                    <li>Real recorded tanpura samples (.wav), not synthesized audio</li>
+                                                    <li>12 pitch options across all semitones, C to B</li>
+                                                    <li>Pancham & Madhyam shruthi tuning toggle</li>
+                                                    <li>Seamless, gapless looping with a live volume slider</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h4>$ Highlights</h4>
+                                                <div class="proj-highlight">
+                                                    Built a zero-dependency, fully responsive practice tool for Nepali
+                                                    classical musicians using the Web Audio API for gapless looping —
+                                                    no install, no login, works right in the browser.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="proj-right">
+                                    <span class="proj-number">04</span>
+                                    <div class="proj-status">
+                                        <div class="proj-status-dot"></div>live
                                     </div>
                                 </div>
                             </div>
