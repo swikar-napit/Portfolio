@@ -1932,6 +1932,37 @@ p {
     box-shadow: 0 0 12px rgba(0, 245, 255, .15)
 }
 
+.ct-honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none
+}
+
+.ct-form-error {
+    font-size: 10.5px;
+    color: #f87171;
+    min-height: 13px;
+    display: block
+}
+
+.ct-form-field input.invalid,
+.ct-form-field textarea.invalid {
+    border-color: #f87171;
+    box-shadow: 0 0 10px rgba(248, 113, 113, .15)
+}
+.ct-form-field input:-webkit-autofill:hover,
+.ct-form-field input:-webkit-autofill:focus,
+.ct-form-field textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, .03) inset;
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, .03) inset;
+    caret-color: var(--text);
+    transition: background-color 5000s ease-in-out 0s
+}
+
 .ct-form-submit {
     display: flex;
     align-items: center;

@@ -838,7 +838,7 @@
     </footer>
     <div class="ct-modal-overlay" id="ctModalOverlay" onclick="if(event.target===this) closeContactModal()">
         <div class="ct-modal">
-            <form class="ct-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form class="ct-form" id="contactForm" action="https://formspree.io/f/xqergdyb" method="POST">
                 <div class="ct-form-bar">
                     <div class="dots">
                         <div class="dot red" onclick="closeContactModal()"></div>
@@ -849,23 +849,28 @@
                     <button type="button" class="ct-modal-close" onclick="closeContactModal()" aria-label="Close">✕</button>
                 </div>
                 <div class="ct-form-body">
+                    <input type="text" name="_gotcha" class="ct-honeypot" tabindex="-1" autocomplete="off">
                     <div class="ct-form-row">
                         <div class="ct-form-field">
                             <label for="ct-name">$ name</label>
                             <input type="text" id="ct-name" name="name" placeholder="Your name" required>
+                            <span class="ct-form-error" id="ct-name-error"></span>
                         </div>
                         <div class="ct-form-field">
                             <label for="ct-email">$ email</label>
                             <input type="email" id="ct-email" name="email" placeholder="you@example.com" required>
+                            <span class="ct-form-error" id="ct-email-error"></span>
                         </div>
                     </div>
                     <div class="ct-form-field">
                         <label for="ct-subject">$ subject</label>
                         <input type="text" id="ct-subject" name="subject" placeholder="What's this about?" required>
+                        <span class="ct-form-error" id="ct-subject-error"></span>
                     </div>
                     <div class="ct-form-field">
                         <label for="ct-message">$ message</label>
                         <textarea id="ct-message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                        <span class="ct-form-error" id="ct-message-error"></span>
                     </div>
                     <button type="submit" class="ct-form-submit" id="ctFormSubmit">
                         <span class="ct-form-submit-text">Send Message</span>

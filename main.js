@@ -181,9 +181,18 @@ function openContactModal() {
 
 function closeContactModal() {
   const overlay = document.getElementById("ctModalOverlay");
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("ctFormStatus");
   if (!overlay) return;
   overlay.classList.remove("show");
   document.body.classList.remove("modal-open");
+  setTimeout(() => {
+    form?.reset();
+    if (statusEl) {
+      statusEl.textContent = "";
+      statusEl.className = "ct-form-status";
+    }
+  }, 300);
 }
 
 document.addEventListener("keydown", (e) => {
@@ -199,8 +208,87 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitText = submitBtn?.querySelector(".ct-form-submit-text");
   const statusEl = document.getElementById("ctFormStatus");
 
+  const fields = {
+    name: { input: document.getElementById("ct-name"), error: document.getElementById("ct-name-error") },
+    email: { input: document.getElementById("ct-email"), error: document.getElementById("ct-email-error") },
+    subject: { input: document.getElementById("ct-subject"), error: document.getElementById("ct-subject-error") },
+    message: { input: document.getElementById("ct-message"), error: document.getElementById("ct-message-error") }
+  };
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setFieldError(field, msg) {
+    field.input.classList.toggle("invalid", !!msg);
+    if (field.error) field.error.textContent = msg || "";
+  }
+
+  function validateForm() {
+    let valid = true;
+
+    const name = fields.name.input.value.trim();
+    if (!name) {
+      setFieldError(fields.name, "Name is required.");
+      valid = false;
+    } else if (name.length < 2) {
+      setFieldError(fields.name, "Enter your full name.");
+      valid = false;
+    } else {
+      setFieldError(fields.name, "");
+    }
+
+    const email = fields.email.input.value.trim();
+    if (!email) {
+      setFieldError(fields.email, "Email is required.");
+      valid = false;
+    } else if (!EMAIL_RE.test(email)) {
+      setFieldError(fields.email, "Enter a valid email address.");
+      valid = false;
+    } else {
+      setFieldError(fields.email, "");
+    }
+
+    const subject = fields.subject.input.value.trim();
+    if (!subject) {
+      setFieldError(fields.subject, "Subject is required.");
+      valid = false;
+    } else {
+      setFieldError(fields.subject, "");
+    }
+
+    const message = fields.message.input.value.trim();
+    if (!message) {
+      setFieldError(fields.message, "Message is required.");
+      valid = false;
+    } else if (message.length < 10) {
+      setFieldError(fields.message, "Message is too short.");
+      valid = false;
+    } else {
+      setFieldError(fields.message, "");
+    }
+
+    return valid;
+  }
+
+  // Clear a field's error as the person fixes it
+  Object.values(fields).forEach(f => {
+    f.input.addEventListener("input", () => setFieldError(f, ""));
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Honeypot: real users never fill this hidden field. If it has a value, it's a bot — drop silently.
+    const honeypot = form.querySelector('input[name="_gotcha"]');
+    if (honeypot && honeypot.value) {
+      form.reset();
+      return;
+    }
+
+    if (!validateForm()) {
+      statusEl.textContent = "✗ Please fix the highlighted fields.";
+      statusEl.className = "ct-form-status error";
+      return;
+    }
 
     submitBtn.disabled = true;
     if (submitText) submitText.textContent = "Sending...";
@@ -215,9 +303,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
+        form.reset();
         statusEl.textContent = "✓ Message sent — I'll get back to you within 24 hours.";
         statusEl.classList.add("success");
-        form.reset();
         setTimeout(closeContactModal, 1800);
       } else {
         const data = await response.json().catch(() => null);
