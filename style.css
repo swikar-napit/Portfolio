@@ -1949,45 +1949,6 @@ p {
     display: block
 }
 
-/* Email field: hover tooltip style, like native browser validation bubble */
-.ct-email-field .ct-form-error {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 0;
-    background: #f87171;
-    color: #1a0d0d;
-    font-size: 11.5px;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 6px;
-    white-space: normal;
-    max-width: 260px;
-    min-height: 0;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(4px);
-    transition: opacity .15s ease, transform .15s ease;
-    pointer-events: none;
-    z-index: 10
-}
-
-.ct-email-field .ct-form-error::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 14px;
-    border: 6px solid transparent;
-    border-top-color: #f87171
-}
-
-.ct-email-field input.invalid:hover ~ .ct-form-error,
-.ct-email-field input.invalid:focus ~ .ct-form-error {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0)
-}
-
 .ct-form-field input.invalid,
 .ct-form-field textarea.invalid {
     border-color: #f87171;
