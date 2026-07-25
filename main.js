@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setFieldError(fields.email, "Email is required.");
       valid = false;
     } else if (!EMAIL_RE.test(email)) {
-      setFieldError(fields.email, "Enter a valid email address.");
+      setFieldError(fields.email, "Please enter a valid email address.");
       valid = false;
     } else {
       setFieldError(fields.email, "");

@@ -1953,10 +1953,11 @@ p {
     border-color: #f87171;
     box-shadow: 0 0 10px rgba(248, 113, 113, .15)
 }
+.ct-form-field input:-webkit-autofill,
 .ct-form-field input:-webkit-autofill:hover,
 .ct-form-field input:-webkit-autofill:focus,
 .ct-form-field textarea:-webkit-autofill {
-    -webkit-text-fill-color: var(--text);
+    -webkit-text-fill-color: var(--text) !important;
     -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, .03) inset;
     box-shadow: 0 0 0 1000px rgba(255, 255, 255, .03) inset;
     caret-color: var(--text);
