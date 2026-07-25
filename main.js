@@ -13,6 +13,10 @@ function scrollToSection(id) {
     target.scrollIntoView({ behavior: 'smooth' });
     history.replaceState(null, null, window.location.pathname);
   }
+  if (id === 'contacts') {
+    const form = document.getElementById('contactForm');
+    if (form) setTimeout(() => form.classList.add('show'), 250);
+  }
 }
 
 // Scrollspy functionality for navigation
@@ -165,3 +169,68 @@ async function loadGithubStats() {
 }
 
 document.addEventListener("DOMContentLoaded", loadGithubStats);
+
+// ---- Contact modal open/close ----
+function openContactModal() {
+  const overlay = document.getElementById("ctModalOverlay");
+  if (!overlay) return;
+  overlay.classList.add("show");
+  document.body.classList.add("modal-open");
+  setTimeout(() => document.getElementById("ct-name")?.focus(), 300);
+}
+
+function closeContactModal() {
+  const overlay = document.getElementById("ctModalOverlay");
+  if (!overlay) return;
+  overlay.classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeContactModal();
+});
+
+// ---- Contact form (Formspree) ----
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  const submitBtn = document.getElementById("ctFormSubmit");
+  const submitText = submitBtn?.querySelector(".ct-form-submit-text");
+  const statusEl = document.getElementById("ctFormStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    if (submitText) submitText.textContent = "Sending...";
+    statusEl.textContent = "";
+    statusEl.className = "ct-form-status";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      if (response.ok) {
+        statusEl.textContent = "✓ Message sent — I'll get back to you within 24 hours.";
+        statusEl.classList.add("success");
+        form.reset();
+        setTimeout(closeContactModal, 1800);
+      } else {
+        const data = await response.json().catch(() => null);
+        const msg = data?.errors?.map(err => err.message).join(", ") || "Something went wrong. Please try again.";
+        statusEl.textContent = "✗ " + msg;
+        statusEl.classList.add("error");
+      }
+    } catch (err) {
+      statusEl.textContent = "✗ Network error — please try again or email me directly.";
+      statusEl.classList.add("error");
+    } finally {
+      submitBtn.disabled = false;
+      if (submitText) submitText.textContent = "Send Message";
+    }
+  });
+});

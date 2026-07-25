@@ -48,7 +48,7 @@
                 <div class="nav-mobile-footer">
                     <span class="nav-mobile-footer-cmd">// 6 sections found</span>
                     <button class="nav-mobile-contact"
-                        onclick="scrollToSection('contacts'); document.querySelector('.nav').classList.remove('open'); document.getElementById('hamburger').classList.remove('active');">Contact
+                        onclick="document.querySelector('.nav').classList.remove('open'); document.getElementById('hamburger').classList.remove('active'); openContactModal();">Contact
                         Me →</button>
                 </div>
             </nav>
@@ -57,7 +57,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <button class="contact-btn" onclick="scrollToSection('contacts')">Contact Me</button>
+            <button class="contact-btn" onclick="openContactModal()">Contact Me</button>
         </div>
         <main>
             <section id="home">
@@ -69,7 +69,7 @@
                         <div class="home-btns">
                             <a href="javascript:void(0)" onclick="scrollToSection('project')"
                                 class="home-btn-primary">View Projects</a>
-                            <a href="javascript:void(0)" onclick="scrollToSection('contacts')"
+                            <a href="javascript:void(0)" onclick="openContactModal()"
                                 class="home-btn-secondary">Contact Me</a>
                         </div>
                     </div>
@@ -836,6 +836,46 @@
         <p>© 2026 Swikar Napit. Built with HTML, CSS & JS.</p>
         <p>Designed with Terminal-style idea</p>
     </footer>
+    <div class="ct-modal-overlay" id="ctModalOverlay" onclick="if(event.target===this) closeContactModal()">
+        <div class="ct-modal">
+            <form class="ct-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="ct-form-bar">
+                    <div class="dots">
+                        <div class="dot red" onclick="closeContactModal()"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span class="code-file">send_message.sh</span>
+                    <button type="button" class="ct-modal-close" onclick="closeContactModal()" aria-label="Close">✕</button>
+                </div>
+                <div class="ct-form-body">
+                    <div class="ct-form-row">
+                        <div class="ct-form-field">
+                            <label for="ct-name">$ name</label>
+                            <input type="text" id="ct-name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="ct-form-field">
+                            <label for="ct-email">$ email</label>
+                            <input type="email" id="ct-email" name="email" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="ct-form-field">
+                        <label for="ct-subject">$ subject</label>
+                        <input type="text" id="ct-subject" name="subject" placeholder="What's this about?" required>
+                    </div>
+                    <div class="ct-form-field">
+                        <label for="ct-message">$ message</label>
+                        <textarea id="ct-message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="ct-form-submit" id="ctFormSubmit">
+                        <span class="ct-form-submit-text">Send Message</span>
+                        <span class="ct-form-submit-arrow">→</span>
+                    </button>
+                    <div class="ct-form-status" id="ctFormStatus"></div>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 
