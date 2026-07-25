@@ -924,6 +924,22 @@ nav a.active::after {
     color: #00f5ff
 }
 
+.ab-stat-num.loading {
+    animation: 1.3s ease-in-out infinite statPulse
+}
+
+@keyframes statPulse {
+
+    0%,
+    100% {
+        opacity: .35
+    }
+
+    50% {
+        opacity: .9
+    }
+}
+
 .ab-stat-label {
     font-size: 9px;
     color: #555;

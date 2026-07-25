@@ -129,6 +129,9 @@ async function loadGithubStats() {
   const reposEl = document.getElementById("stat-repos");
   const projectsEl = document.getElementById("stat-projects");
 
+  commitsEl?.classList.add("loading");
+  reposEl?.classList.add("loading");
+
   // Projects count = number of Featured Project cards actually on this page.
   // No GitHub call needed — it stays in sync automatically whenever you
   // add or remove a .proj-card in the Project section.
@@ -137,10 +140,11 @@ async function loadGithubStats() {
 
   try {
     // Live public repo count
-    const userRes = await fetch(`https://api.github.com/users/${GH_USERNAME}`);
+    const userRes = await fetch(`https://api.github.com/users/${GH_USERNAME}`, { cache: "no-store" });
     if (userRes.ok) {
       const userData = await userRes.json();
       if (typeof userData.public_repos === "number") {
+        reposEl?.classList.remove("loading");
         animateCount(reposEl, userData.public_repos);
       }
     }
@@ -148,11 +152,12 @@ async function loadGithubStats() {
     // Live contribution count (used as "commits" proxy — counts commits,
     // issues, PRs, and reviews from the last 12 months, same data GitHub's
     // own contribution graph is built from)
-    const contribRes = await fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USERNAME}?y=last`);
+    const contribRes = await fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USERNAME}?y=last`, { cache: "no-store" });
     if (contribRes.ok) {
       const contribData = await contribRes.json();
       const total = contribData?.total?.lastYear ?? contribData?.total?.[new Date().getFullYear()];
       if (typeof total === "number") {
+        commitsEl?.classList.remove("loading");
         animateCount(commitsEl, total);
       }
     }
@@ -165,6 +170,9 @@ async function loadGithubStats() {
       const textEl = statusEl.querySelector(".gh-stats-text");
       if (textEl) textEl.textContent = "offline";
     }
+  } finally {
+    commitsEl?.classList.remove("loading");
+    reposEl?.classList.remove("loading");
   }
 }
 
