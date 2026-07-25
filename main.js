@@ -192,6 +192,9 @@ function closeContactModal() {
       statusEl.textContent = "";
       statusEl.className = "ct-form-status";
     }
+    form?.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
+    form?.querySelectorAll(".ct-form-error").forEach(el => el.textContent = "");
+    if (window.ctResetTouchState) window.ctResetTouchState();
   }, 300);
 }
 
@@ -222,56 +225,59 @@ document.addEventListener("DOMContentLoaded", () => {
     if (field.error) field.error.textContent = msg || "";
   }
 
+  function validateField(key) {
+    const f = fields[key];
+    const val = f.input.value.trim();
+
+    if (key === "name") {
+      if (!val) return setFieldError(f, "Name is required."), false;
+      if (val.length < 2) return setFieldError(f, "Enter your full name."), false;
+    }
+    if (key === "email") {
+      if (!val) return setFieldError(f, "Email is required."), false;
+      if (!EMAIL_RE.test(val)) return setFieldError(f, "Please enter a valid email address."), false;
+    }
+    if (key === "subject") {
+      if (!val) return setFieldError(f, "Subject is required."), false;
+    }
+    if (key === "message") {
+      if (!val) return setFieldError(f, "Message is required."), false;
+      if (val.length < 10) return setFieldError(f, "Message is too short."), false;
+    }
+
+    setFieldError(f, "");
+    return true;
+  }
+
   function validateForm() {
     let valid = true;
-
-    const name = fields.name.input.value.trim();
-    if (!name) {
-      setFieldError(fields.name, "Name is required.");
-      valid = false;
-    } else if (name.length < 2) {
-      setFieldError(fields.name, "Enter your full name.");
-      valid = false;
-    } else {
-      setFieldError(fields.name, "");
-    }
-
-    const email = fields.email.input.value.trim();
-    if (!email) {
-      setFieldError(fields.email, "Email is required.");
-      valid = false;
-    } else if (!EMAIL_RE.test(email)) {
-      setFieldError(fields.email, "Please enter a valid email address.");
-      valid = false;
-    } else {
-      setFieldError(fields.email, "");
-    }
-
-    const subject = fields.subject.input.value.trim();
-    if (!subject) {
-      setFieldError(fields.subject, "Subject is required.");
-      valid = false;
-    } else {
-      setFieldError(fields.subject, "");
-    }
-
-    const message = fields.message.input.value.trim();
-    if (!message) {
-      setFieldError(fields.message, "Message is required.");
-      valid = false;
-    } else if (message.length < 10) {
-      setFieldError(fields.message, "Message is too short.");
-      valid = false;
-    } else {
-      setFieldError(fields.message, "");
-    }
-
+    Object.keys(fields).forEach(key => {
+      if (!validateField(key)) valid = false;
+    });
     return valid;
   }
 
-  // Clear a field's error as the person fixes it
-  Object.values(fields).forEach(f => {
-    f.input.addEventListener("input", () => setFieldError(f, ""));
+  let submitAttempted = false;
+  const touched = { name: false, email: false, subject: false, message: false };
+
+  window.ctResetTouchState = () => {
+    submitAttempted = false;
+    Object.keys(touched).forEach(k => touched[k] = false);
+  };
+
+  // Validate live: show error on blur, clear error as they retype
+  Object.entries(fields).forEach(([key, f]) => {
+    f.input.addEventListener("blur", () => {
+      const isEmpty = f.input.value.trim() === "";
+      // Skip showing "required" errors for a field the person hasn't typed into yet,
+      // unless they've already attempted to submit once.
+      if (isEmpty && !touched[key] && !submitAttempted) return;
+      validateField(key);
+    });
+    f.input.addEventListener("input", () => {
+      touched[key] = true;
+      if (f.input.classList.contains("invalid")) validateField(key);
+    });
   });
 
   form.addEventListener("submit", async (e) => {
@@ -285,7 +291,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!validateForm()) {
-      statusEl.textContent = "✗ Please fix the highlighted fields.";
+      submitAttempted = true;
+      statusEl.textContent = "✗ Please fill in all fields correctly.";
       statusEl.className = "ct-form-status error";
       return;
     }
