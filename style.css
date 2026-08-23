@@ -2127,6 +2127,15 @@ body.modal-open {
     box-shadow: 0 0 20px rgba(234, 179, 8, .25)
 }
 
+.ct-pink {
+    border: 1px solid #2a0f1f
+}
+
+.ct-pink:hover {
+    border-color: #c2255c;
+    box-shadow: 0 0 20px rgba(194, 37, 92, .25)
+}
+
 .ct-icon {
     width: 44px;
     height: 44px;
@@ -2155,6 +2164,11 @@ body.modal-open {
 .ct-icon-yellow {
     background: rgba(234, 179, 8, .15);
     border: 1px solid rgba(234, 179, 8, .3)
+}
+
+.ct-icon-pink {
+    background: rgba(194, 37, 92, .13);
+    border: 1px solid rgba(194, 37, 92, .28)
 }
 
 .ct-icon-cyan {
