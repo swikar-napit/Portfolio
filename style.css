@@ -719,6 +719,11 @@ nav a.active::after {
     flex-shrink: 0
 }
 
+.ab-avatar-img {
+    object-fit: cover;
+    object-position: 70% 20%;
+}
+
 .ab-profile-name {
     font-size: 16px;
     font-weight: 700;
