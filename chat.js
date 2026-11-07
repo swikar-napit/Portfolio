@@ -2,7 +2,7 @@
 (() => {
   const CONFIG = {
     // After deploying api/chat.js to Vercel, put its URL here (or "/api/chat" if the portfolio is on the same Vercel project).
-    endpoint: "https://www.swikarnapit.com.np/api/chat",
+    endpoint: "https://www.swikarnapit.com.np/api/ask",
     name: "Suri",
     greeting: "Hi! I'm Suri, an AI assistant. Curious about Swikar's work? Feel free to ask!",
     suggestions: ["Tell me about Swikar", "What has Swikar built?", "What's Swikar's tech stack?", "How can I contact Swikar?"],
