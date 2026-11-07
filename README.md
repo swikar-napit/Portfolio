@@ -10,13 +10,15 @@
 
 This is my personal developer portfolio — built from scratch with HTML, CSS, and JavaScript,
 designed around a terminal/code-editor aesthetic. It highlights who I am, what I can build,
-and how to get in touch.
+and how to get in touch. It also includes **Pixel**, an AI assistant that answers visitors'
+questions about my work.
 
 ---
 
 ## ✨ Features
 
 - 🖥️ Terminal-style UI with typewriter effect
+- 🤖 **Pixel, the AI assistant** — a floating chat that answers questions about my projects, skills, and education, with a mobile-friendly full-size window
 - 📱 Fully responsive — works on mobile, tablet, and desktop
 - 🧭 Scrollspy navigation that highlights the active section
 - 📂 Project cards with live demo and source code links
@@ -27,22 +29,48 @@ and how to get in touch.
 
 ## 🛠 Tech Stack
 
-| Technology  | Purpose            |
-| ----------- | ------------------ |
-| HTML5       | Structure           |
-| CSS3        | Styling & layout    |
-| JavaScript  | Interactivity       |
+| Technology                | Purpose                                   |
+| ------------------------- | ----------------------------------------- |
+| HTML5                     | Structure                                 |
+| CSS3                      | Styling & layout                          |
+| JavaScript                | Interactivity and the chat widget         |
+| Node.js (Vercel function) | Secure back end for the AI assistant      |
+| Groq API (GPT-OSS 120B)   | Language model behind Pixel                |
+
+---
+
+## 🤖 AI Assistant (Pixel)
+
+Pixel is a chat widget that opens from the round button in the bottom-right corner.
+
+- **Front end:** `chat.js` and `chat.css` build the chat window, keep the conversation for the session, and send messages to the API. The window opens with a smooth transition, never opens the keyboard automatically on mobile, shows suggestion chips, and offers a **Retry** button if a request fails.
+- **Back end:** `api/ask.js` is a Vercel serverless function that calls the Groq API. The API key stays on the server and is never exposed in the browser.
+- **Knowledge:** `api/_profile.js` holds everything Pixel knows about me. Edit it when the portfolio changes, then push to redeploy.
+- **Personality:** Pixel is warm and polite, answers exactly what was asked in a short reply, and offers to go deeper instead of dumping everything.
+- **Safeguards:** only my own domains can call the API, requests are rate limited per IP, message length and history are capped, and Pixel answers only from the portfolio facts. She declines questions about other people and unrelated topics.
+
+### Environment variables (set in Vercel, never commit them)
+
+| Variable          | Required | Purpose                                              |
+| ----------------- | -------- | ---------------------------------------------------- |
+| `GROQ_API_KEY`    | Yes      | Groq API key                                         |
+| `GROQ_MODEL`      | No       | Override the default model (`openai/gpt-oss-120b`)   |
+| `ALLOWED_ORIGINS` | No       | Extra allowed origins, comma-separated               |
 
 ---
 
 ## 📁 Project Structure
 ```text
 Portfolio/
-
 │
 ├── index.html      (Main page structure)
 ├── style.css       (Styling and responsive design)
 ├── main.js         (Scrollspy, typewriter effect, menu toggle)
+├── chat.js         (Pixel chat widget — front end)
+├── chat.css        (Chat widget styling)
+├── api/
+│   ├── ask.js      (Serverless function that calls the Groq API)
+│   └── _profile.js (Pixel's instructions and knowledge about me)
 ├── Image/          (Images and icons folder)
 └── README.md       (Project documentation)
 ```
