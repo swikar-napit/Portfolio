@@ -134,7 +134,6 @@
     } finally {
       busy = sendBtn.disabled = false;
       save();
-      if (panel.classList.contains("open")) input.focus();
     }
   }
 
@@ -142,7 +141,6 @@
     panel.classList.add("open");
     launcher.classList.add("hidden");
     launcher.setAttribute("aria-expanded", "true");
-    setTimeout(() => input.focus(), 250);
   }
   function closePanel() {
     panel.classList.remove("open");
@@ -153,7 +151,7 @@
 
   launcher.onclick = openPanel;
   $("aiClose").onclick = closePanel;
-  $("aiClear").onclick = () => { messages = []; save(); showIntro(); input.focus(); };
+  $("aiClear").onclick = () => { messages = []; save(); showIntro(); };
   $("aiForm").onsubmit = e => { e.preventDefault(); send(input.value); };
   document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("open")) closePanel(); });
 
