@@ -10,14 +10,21 @@ const ALLOWED = [
   ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(",").map(s => s.trim()) : [])
 ];
 
-// Best-effort rate limit per IP (resets when the function instance recycles)
+// Best-effort rate limits (reset when the function instance recycles).
+// Each device gets its own limit (via a random client id), so other devices on the
+// same Wi-Fi keep working. A looser per-IP cap still stops one network from flooding.
 const hits = new Map();
-function limited(ip) {
+function check(key, max, windowMs = 60000) {
   const now = Date.now();
-  const recent = (hits.get(ip) || []).filter(t => now - t < 60000);
+  if (hits.size > 5000) for (const [k, v] of hits) if (!v.some(t => now - t < windowMs)) hits.delete(k);
+  const recent = (hits.get(key) || []).filter(t => now - t < windowMs);
+  if (recent.length >= max) {
+    hits.set(key, recent);
+    return Math.max(1, Math.ceil((windowMs - (now - recent[0])) / 1000)); // seconds to wait
+  }
   recent.push(now);
-  hits.set(ip, recent);
-  return recent.length > 12;
+  hits.set(key, recent);
+  return 0;
 }
 
 module.exports = async (req, res) => {
@@ -34,7 +41,15 @@ module.exports = async (req, res) => {
   if (!ALLOWED.includes(origin)) return res.status(403).json({ error: "Forbidden" });
 
   const ip = (req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
-  if (limited(ip)) return res.status(429).json({ error: "Too many requests" });
+  const cid = typeof req.body?.cid === "string" && /^[\w-]{8,64}$/.test(req.body.cid) ? req.body.cid : "";
+  const wait = Math.max(
+    check("ip:" + ip, 40),                                  // shared networks: generous
+    cid ? check("cid:" + cid, 10) : check("nocid:" + ip, 6) // per device: 10 per minute
+  );
+  if (wait) {
+    res.setHeader("Retry-After", String(wait));
+    return res.status(429).json({ error: "Too many requests", retryAfter: wait });
+  }
 
   const incoming = Array.isArray(req.body?.messages) ? req.body.messages : [];
   const messages = incoming
@@ -49,7 +64,7 @@ module.exports = async (req, res) => {
   const body = {
     model,
     messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-    temperature: 0.5,
+    temperature: 0.3,
     max_completion_tokens: 700
   };
   if (model.includes("gpt-oss")) body.reasoning_effort = "low";

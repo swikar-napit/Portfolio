@@ -34,7 +34,19 @@
     return html + (list ? "</ul>" : "");
   }
 
-  let messages = [], busy = false;
+  let messages = [], busy = false, coolUntil = 0, coolTimer = null;
+  const sentAt = [];                       // timestamps of recent sends (per tab)
+  const LIMIT = { max: 5, windowMs: 30000 }; // 5 messages per 30s, then a short pause
+
+  // Anonymous per-device id so people on the same Wi-Fi don't share one limit.
+  const rnd = () => (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now());
+  const cid = (() => {
+    try {
+      let v = localStorage.getItem("swikar-ai-cid");
+      if (!v) { v = rnd(); localStorage.setItem("swikar-ai-cid", v); }
+      return v;
+    } catch (e) { return rnd(); }
+  })();
 
   document.body.insertAdjacentHTML("beforeend", `
     <button class="ai-launcher" id="aiLauncher" aria-label="Open AI assistant" aria-expanded="false" aria-controls="aiPanel">
@@ -61,6 +73,25 @@
   const $ = id => document.getElementById(id);
   const launcher = $("aiLauncher"), panel = $("aiPanel"), log = $("aiLog"), input = $("aiInput"), sendBtn = $("aiSend");
   const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+
+  // Pause sending for a few seconds and show a live countdown in the input placeholder.
+  function cooldown(sec) {
+    coolUntil = Date.now() + sec * 1000;
+    clearInterval(coolTimer);
+    const tick = () => {
+      const left = Math.ceil((coolUntil - Date.now()) / 1000);
+      if (left > 0) {
+        sendBtn.disabled = true;
+        input.placeholder = `Please wait ${left}s...`;
+      } else {
+        clearInterval(coolTimer);
+        input.placeholder = "Ask a question...";
+        sendBtn.disabled = busy;
+      }
+    };
+    tick();
+    coolTimer = setInterval(tick, 500);
+  }
 
   function button(label, onclick, cls = "ai-btn") {
     const b = document.createElement("button");
@@ -95,7 +126,19 @@
 
   async function send(text) {
     text = text.trim().slice(0, CFG.maxChars);
-    if (!text || busy) return;
+    if (!text || busy || Date.now() < coolUntil) return;
+
+    // Local spam guard: too many sends in a short time
+    const now = Date.now();
+    while (sentAt.length && now - sentAt[0] > LIMIT.windowMs) sentAt.shift();
+    if (sentAt.length >= LIMIT.max) {
+      const wait = Math.ceil((LIMIT.windowMs - (now - sentAt[0])) / 1000);
+      addMsg("bot", `You're sending messages too fast. Please wait ${wait} seconds and try again.`, { error: true });
+      cooldown(wait);
+      return;
+    }
+    sentAt.push(now);
+
     $("aiChips")?.remove();
     input.value = "";
     messages.push({ role: "user", content: text });
@@ -112,10 +155,10 @@
       const res = await fetch(CFG.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: messages.slice(-CFG.maxHistory) })
+        body: JSON.stringify({ cid, messages: messages.slice(-CFG.maxHistory) })
       });
       const data = await res.json().catch(() => ({}));
-      if (res.status === 429) throw new Error("rate");
+      if (res.status === 429) throw Object.assign(new Error("rate"), { wait: Math.min(Math.max(+data.retryAfter || 30, 5), 120) });
       if (!res.ok || !data.reply) throw new Error("bad");
       typing.remove();
       messages.push({ role: "assistant", content: data.reply });
@@ -124,12 +167,14 @@
       typing.remove();
       messages.pop(); // keep the failed question out of the history
       const rate = err.message === "rate";
-      const actions = [["Retry", e => { e.target.closest(".ai-msg").remove(); log.lastElementChild?.remove(); send(text); }]];
+      const actions = rate ? [] : [["Retry", e => { e.target.closest(".ai-msg").remove(); log.lastElementChild?.remove(); send(text); }]];
       if (!rate) actions.push(["Contact form", () => { closePanel(); window.openContactModal?.(); }]);
-      addMsg("bot", rate ? "Too many messages in a short time. Wait a minute, then try again."
+      if (rate) cooldown(err.wait);
+      addMsg("bot", rate ? `Too many messages in a short time. Please wait ${err.wait} seconds, then try again.`
         : "Couldn't reach the assistant. Try again, or message Swikar directly.", { error: true, actions });
     } finally {
-      busy = sendBtn.disabled = false;
+      busy = false;
+      sendBtn.disabled = Date.now() < coolUntil;
     }
   }
 
