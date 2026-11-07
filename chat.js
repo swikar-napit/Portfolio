@@ -78,7 +78,7 @@
   let notice = null;
   const showBusy = sec => {
     notice?.remove();
-    notice = addMsg("bot", `${CFG.name} is busy right now. Please try again in ${sec} second${sec === 1 ? "" : "s"}.`, { error: true });
+    notice = addMsg("bot", `${CFG.name} is busy right now. Please try again in a moment.`, { error: true });
   };
 
   // Pause sending for a few seconds and show a live countdown in the input placeholder.
@@ -88,7 +88,7 @@
     const tick = () => {
       const left = Math.ceil((coolUntil - Date.now()) / 1000);
       if (left > 0) {
-        input.placeholder = `Please wait ${left}s...`;
+        input.placeholder = "Busy, try again in a moment...";
       } else {
         clearInterval(coolTimer);
         input.placeholder = "Ask a question...";
