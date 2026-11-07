@@ -6,8 +6,7 @@
     greeting: "Hi! I'm Pixel, an AI assistant. Curious about Swikar's work? Feel free to ask!",
     suggestions: ["Tell me about Swikar", "What has Swikar built?", "What's Swikar's tech stack?", "How can I contact Swikar?"],
     maxHistory: 10,
-    maxChars: 500,
-    storageKey: "swikar-ai-chat"
+    maxChars: 500
   };
 
   const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -36,8 +35,6 @@
   }
 
   let messages = [], busy = false;
-  try { messages = JSON.parse(sessionStorage.getItem(CFG.storageKey)) || []; } catch (e) {}
-  const save = () => { try { sessionStorage.setItem(CFG.storageKey, JSON.stringify(messages)); } catch (e) {} };
 
   document.body.insertAdjacentHTML("beforeend", `
     <button class="ai-launcher" id="aiLauncher" aria-label="Open AI assistant" aria-expanded="false" aria-controls="aiPanel">
@@ -133,7 +130,6 @@
         : "Couldn't reach the assistant. Try again, or message Swikar directly.", { error: true, actions });
     } finally {
       busy = sendBtn.disabled = false;
-      save();
     }
   }
 
@@ -151,7 +147,7 @@
 
   launcher.onclick = openPanel;
   $("aiClose").onclick = closePanel;
-  $("aiClear").onclick = () => { messages = []; save(); showIntro(); };
+  $("aiClear").onclick = () => { messages = []; showIntro(); };
   $("aiForm").onsubmit = e => { e.preventDefault(); send(input.value); };
   document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("open")) closePanel(); });
 
