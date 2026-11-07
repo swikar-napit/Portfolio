@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
     model,
     messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
     temperature: 0.5,
-    max_completion_tokens: 900
+    max_completion_tokens: 700
   };
   if (model.includes("gpt-oss")) body.reasoning_effort = "low";
 
