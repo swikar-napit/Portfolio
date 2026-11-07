@@ -74,6 +74,13 @@
   const launcher = $("aiLauncher"), panel = $("aiPanel"), log = $("aiLog"), input = $("aiInput"), sendBtn = $("aiSend");
   const scrollDown = () => { log.scrollTop = log.scrollHeight; };
 
+  // One busy notice at a time: a new one replaces the previous one.
+  let notice = null;
+  const showBusy = sec => {
+    notice?.remove();
+    notice = addMsg("bot", `${CFG.name} is busy right now. Please try again in ${sec} second${sec === 1 ? "" : "s"}.`, { error: true });
+  };
+
   // Pause sending for a few seconds and show a live countdown in the input placeholder.
   function cooldown(sec) {
     coolUntil = Date.now() + sec * 1000;
@@ -81,12 +88,10 @@
     const tick = () => {
       const left = Math.ceil((coolUntil - Date.now()) / 1000);
       if (left > 0) {
-        sendBtn.disabled = true;
         input.placeholder = `Please wait ${left}s...`;
       } else {
         clearInterval(coolTimer);
         input.placeholder = "Ask a question...";
-        sendBtn.disabled = busy;
       }
     };
     tick();
@@ -126,17 +131,22 @@
 
   async function send(text) {
     text = text.trim().slice(0, CFG.maxChars);
-    if (!text || busy || Date.now() < coolUntil) return;
+    if (!text || busy) return;
 
-    // Local spam guard: too many sends in a short time
+    // Local spam guard: still show the message as sent, skip the request, and show a fresh busy notice.
     const now = Date.now();
     while (sentAt.length && now - sentAt[0] > LIMIT.windowMs) sentAt.shift();
-    if (sentAt.length >= LIMIT.max) {
-      const wait = Math.ceil((LIMIT.windowMs - (now - sentAt[0])) / 1000);
-      addMsg("bot", `You're sending messages too fast. Please wait ${wait} seconds and try again.`, { error: true });
-      cooldown(wait);
+    const waitMs = Math.max(coolUntil - now, sentAt.length >= LIMIT.max ? LIMIT.windowMs - (now - sentAt[0]) : 0);
+    if (waitMs > 0) {
+      const wait = Math.ceil(waitMs / 1000);
+      $("aiChips")?.remove();
+      input.value = "";
+      addMsg("user", text);
+      showBusy(wait);
+      if (now >= coolUntil) cooldown(wait);
       return;
     }
+    notice?.remove(); notice = null;
     sentAt.push(now);
 
     $("aiChips")?.remove();
@@ -170,11 +180,11 @@
       const actions = rate ? [] : [["Retry", e => { e.target.closest(".ai-msg").remove(); log.lastElementChild?.remove(); send(text); }]];
       if (!rate) actions.push(["Contact form", () => { closePanel(); window.openContactModal?.(); }]);
       if (rate) cooldown(err.wait);
-      addMsg("bot", rate ? `Too many messages in a short time. Please wait ${err.wait} seconds, then try again.`
-        : "Couldn't reach the assistant. Try again, or message Swikar directly.", { error: true, actions });
+      if (rate) showBusy(err.wait);
+      else addMsg("bot", "Couldn't reach the assistant. Try again, or message Swikar directly.", { error: true, actions });
     } finally {
       busy = false;
-      sendBtn.disabled = Date.now() < coolUntil;
+      sendBtn.disabled = false;
     }
   }
 
