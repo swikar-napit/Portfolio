@@ -47,7 +47,9 @@ Pixel is a chat widget that opens from the round button in the bottom-right corn
 - **Back end:** `api/ask.js` is a Vercel serverless function that calls the Groq API. The API key stays on the server and is never exposed in the browser.
 - **Knowledge:** `api/_profile.js` holds everything Pixel knows about me. Edit it when the portfolio changes, then push to redeploy.
 - **Personality:** Pixel is warm and polite, answers exactly what was asked in a short reply, and offers to go deeper instead of dumping everything.
-- **Safeguards:** only my own domains can call the API, requests are rate limited per IP, message length and history are capped, and Pixel answers only from the portfolio facts. She declines questions about other people and unrelated topics.
+- **Safeguards:** only my own domains can call the API, message length and history are capped, and Pixel answers only from the portfolio facts. She declines questions about other people and unrelated topics.
+- **Spam protection:** the chat pauses for a few seconds (with a live countdown) if someone sends more than 5 messages in 30 seconds. The server also limits each device to 10 messages per minute using an anonymous device id, with a looser per-IP cap, so other devices on the same Wi-Fi keep working.
+- **Privacy:** the chat is kept in memory only and clears whenever the page is refreshed.
 
 ### Environment variables (set in Vercel, never commit them)
 
